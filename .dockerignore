@@ -1,0 +1,22 @@
+#https://stackoverflow.com/questions/28097064/dockerignore-ignore-everything-except-a-file-and-the-dockerfile
+
+# Ignore Everything
+**
+
+!requirements.txt
+
+!work
+!test
+!pyamber
+!config
+!source
+
+!start.py
+!caching.py
+!caching_clear.py
+!build_whoosh.py
+!start_dev.py
+
+**/__pycache__
+**/*.pyc
+.ipynb_checkpoints
