@@ -1,0 +1,67 @@
+from flask import Flask, current_app
+from pyamber.request import AmberRequest
+
+
+class InvalidSettingsError(Exception):
+    pass
+
+
+class Amberdata(object):
+    """Main class used for initialization of Flask-Addepar."""
+
+    def __init__(self, app=None, config=None):
+        self.app = None
+        if app is not None:
+            self.init_app(app, config)
+
+    def init_app(self, app, config=None):
+        if not app or not isinstance(app, Flask):
+            raise Exception('Invalid Flask application instance')
+
+        self.app = app
+
+        app.extensions = getattr(app, 'extensions', {})
+
+        if 'amberdata' not in app.extensions:
+            app.extensions['amberdata'] = {}
+
+        if self in app.extensions['amberdata']:
+            # Raise an exception if extension already initialized as
+            # potentially new configuration would not be loaded.
+            raise Exception('Extension already initialized')
+
+        if not config:
+            # If not passed a config then we read the connection settings
+            # from the app config.
+            config = app.config
+
+        # Obtain db connection(s)
+        requests = create_requests(config)
+
+        # Store objects in application instance so that multiple apps do not
+        # end up accessing the same objects.
+        s = {'app': app, 'request': requests}
+        app.extensions['amberdata'][self] = s
+
+    @property
+    def request(self):
+        """
+        Return Amberdata request associated with this flask instance.
+        """
+        return current_app.extensions['amberdata'][self]['request']
+
+
+def create_requests(config):
+    """
+    Given Flask application's config dict, extract relevant config vars
+    out of it and establish Amberdata's connection(s) based on them.
+    """
+    # Validate that the config is a dict
+    if config is None or not isinstance(config, dict):
+        raise InvalidSettingsError('Invalid application configuration')
+
+    # Get sanitized connection settings based on the config
+    conn_settings = config["AMBERDATA"]
+
+    # Otherwise, return a single connection
+    return AmberRequest(key=conn_settings["X-API-KEY"])
