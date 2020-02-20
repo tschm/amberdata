@@ -7,12 +7,28 @@ class InvalidSettingsError(Exception):
 
 
 class Amberdata(object):
-    """Main class used for initialization of Flask-Addepar."""
+    """Main class used for initialization of Flask-Amberdata."""
 
     def __init__(self, app=None, config=None):
         self.app = None
         if app is not None:
             self.init_app(app, config)
+
+    @staticmethod
+    def __create_request(config):
+        """
+        Given Flask application's config dict, extract relevant config vars
+        out of it and establish Amberdata's requests based on them.
+        """
+        # Validate that the config is a dict
+        if config is None or not isinstance(config, dict):
+            raise InvalidSettingsError('Invalid application configuration')
+
+        # Get sanitized connection settings based on the config
+        conn_settings = config["AMBERDATA"]
+
+        # Otherwise, return a single connection
+        return AmberRequest(key=conn_settings["X-API-KEY"])
 
     def init_app(self, app, config=None):
         if not app or not isinstance(app, Flask):
@@ -36,7 +52,7 @@ class Amberdata(object):
             config = app.config
 
         # Obtain db connection(s)
-        requests = create_requests(config)
+        requests = Amberdata.__create_request(config)
 
         # Store objects in application instance so that multiple apps do not
         # end up accessing the same objects.
@@ -51,17 +67,5 @@ class Amberdata(object):
         return current_app.extensions['amberdata'][self]['request']
 
 
-def create_requests(config):
-    """
-    Given Flask application's config dict, extract relevant config vars
-    out of it and establish Amberdata's connection(s) based on them.
-    """
-    # Validate that the config is a dict
-    if config is None or not isinstance(config, dict):
-        raise InvalidSettingsError('Invalid application configuration')
+amberdata = Amberdata()
 
-    # Get sanitized connection settings based on the config
-    conn_settings = config["AMBERDATA"]
-
-    # Otherwise, return a single connection
-    return AmberRequest(key=conn_settings["X-API-KEY"])

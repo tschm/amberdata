@@ -15,5 +15,3 @@ services:
        #- /media/j/cache/performance:/tmp/cache
      #ports:
      #  - "5555:8000"
-     env_file:
-       - .env
