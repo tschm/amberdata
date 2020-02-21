@@ -9,5 +9,7 @@ if __name__ == '__main__':
 
     with app.app_context():
         response = amberdata.request.health
+        x = amberdata.request.price_history("eth_usd")
+        print(x)
 
 
