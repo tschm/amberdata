@@ -3,7 +3,6 @@ from flask import Flask
 from pyamber.flask_amberdata import amberdata
 
 
-
 @pytest.fixture
 def client():
     app = Flask(__name__)
