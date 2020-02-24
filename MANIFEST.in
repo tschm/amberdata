@@ -1,0 +1,3 @@
+include test/config/*
+include test/resources/*
+include test/*.py
