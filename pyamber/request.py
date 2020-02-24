@@ -33,8 +33,6 @@ class AmberRequest(object):
     def get(self, url, params=None):
         response = requests.get(url=url, params=params, headers=self.headers)
         # check that the response is ok
-        print(response)
-        #assert response.status_code == 200
         response.raise_for_status()
         return response
 
@@ -58,7 +56,5 @@ class AmberRequest(object):
         #request = AmberRequest()
         response = self.get(url=url, params=params)
 
-        print(response.json())
-        print(type(response.json()))
         request = response.json()["payload"]
         return payload2frame(request)

@@ -42,7 +42,8 @@ ENV APPLICATION_SETTINGS="/amberdata/test/config/settings.cfg"
 
 WORKDIR amberdata
 
-RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock attrdict mongomock requests-mock
+RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html requests-mock
+#pytest-mock requests-mock
 
 CMD py.test --cov=pyamber  --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html /amberdata/test
 

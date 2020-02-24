@@ -27,6 +27,7 @@ def test_history_mock(client):
                                      params={'timeInterval': 'hours', 'startDate': 1579046400000, 'endDate': 1579219200000, 'timeFormat': 'milliseconds'},
                                      url='https://web3api.io/api/v2/market/prices/eth_usd/historical')
 
+
 def test_history_mock_2(client, requests_mock):
     requests_mock.get('https://web3api.io/api/v2/market/prices/eth_usd/historical',
                       json={"status": 200, "title": "OK", "description": "Successful request", "payload": {"eth_usd": [{"timestamp": 1578873600000, "price": 146.7310000000000000}, {"timestamp": 1578787200000, "price": 142.3810000000000000}]}})
