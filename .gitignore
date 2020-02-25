@@ -25,3 +25,5 @@ index
 .ipynb_checkpoints
 *.egg-info
 dist
+
+config/settings.cfg
