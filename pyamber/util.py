@@ -6,5 +6,6 @@ def dict2series(ts):
 
 
 def payload2frame(payload):
+    #todo:
     return pd.DataFrame({name: dict2series(ts) for name, ts in payload.items()})
 

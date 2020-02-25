@@ -33,8 +33,6 @@ class AmberRequest(object):
     def get(self, url, params=None):
         response = requests.get(url=url, params=params, headers=self.headers)
         # check that the response is ok
-        print(response)
-        #assert response.status_code == 200
         response.raise_for_status()
         return response
 
@@ -43,6 +41,7 @@ class AmberRequest(object):
         return self.get(url="https://web3api.io/health")
 
     def price_history(self, pair, timeInterval=None, startDate=None, endDate=None, timeFormat=None):
+        # todo: pagination
         #pd.Timestamp.value_in_milliseconds = property(lambda self: int(self.value*1e-6))
 
         startDate = (startDate or pd.Timestamp("today")).value_in_milliseconds
@@ -55,10 +54,7 @@ class AmberRequest(object):
         url="https://web3api.io/api/v2/market/prices/{pair}/historical".format(pair=pair)
         params = {"timeInterval": timeInterval.value, "startDate": startDate, "endDate": endDate, "timeFormat": timeFormat.value}
 
-        #request = AmberRequest()
         response = self.get(url=url, params=params)
 
-        print(response.json())
-        print(type(response.json()))
         request = response.json()["payload"]
         return payload2frame(request)
