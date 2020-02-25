@@ -6,14 +6,9 @@ services:
        dockerfile: Dockerfile
        target: production
 
-     # extra_hosts:
-     #  - quantsrv:192.168.100.15
      volumes:
        # sharing volumes like this is won't respect the .dockerignore file!
        - ./pyamber:/amberdata/pyamber:ro
        - ./config:/amberdata/config:ro
-       #- /media/j/cache/performance:/tmp/cache
-     #ports:
-     #  - "5555:8000"
      env_file:
        - .env

@@ -4,7 +4,6 @@ from enum import Enum
 import requests
 import pandas as pd
 
-from pyamber.util import payload2frame
 
 pd.Timestamp.value_in_milliseconds = property(lambda self: int(self.value*1e-6))
 
@@ -40,16 +39,22 @@ class AmberRequest(object):
     def health(self):
         return self.get(url="https://web3api.io/health")
 
-    def price_history(self, pair, timeInterval=None, startDate=None, endDate=None, timeFormat=None):
+    def price_history(self, pair, timeInterval=None, startDate=None, endDate=None):
         # todo: pagination
-        #pd.Timestamp.value_in_milliseconds = property(lambda self: int(self.value*1e-6))
+
+        def __dict2series(ts):
+            return pd.Series({pd.Timestamp(1e6 * int(x["timestamp"])): x["price"] for x in ts})
+
+        def __payload2frame(payload):
+            return pd.DataFrame({name: __dict2series(ts) for name, ts in payload.items()})
+
 
         startDate = (startDate or pd.Timestamp("today")).value_in_milliseconds
         endDate = (endDate or pd.Timestamp("today")).value_in_milliseconds
 
         #gap = endDate - startDate
         timeInterval = timeInterval or TimeInterval.HOURS
-        timeFormat = timeFormat or TimeFormat.MILLISECONDS
+        timeFormat = TimeFormat.MILLISECONDS
 
         url="https://web3api.io/api/v2/market/prices/{pair}/historical".format(pair=pair)
         params = {"timeInterval": timeInterval.value, "startDate": startDate, "endDate": endDate, "timeFormat": timeFormat.value}
@@ -57,4 +62,4 @@ class AmberRequest(object):
         response = self.get(url=url, params=params)
 
         request = response.json()["payload"]
-        return payload2frame(request)
+        return __payload2frame(request)
