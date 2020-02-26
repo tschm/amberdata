@@ -1,3 +1,2 @@
-include test/config/*
-include test/resources/*
-include test/*.py
+include LICENSE.txt
+include README.md

@@ -16,5 +16,5 @@ setup(
     author_email='thomas.schmelzer@gmail.com',
     url = 'https://github.com/tschm/amberdata',
     description='Utility code for interacting with amberdata', install_requires=['requests>=2.22.0', 'pandas>=0.25.0'],
-    license='LICENSE.txt'
+    license="MIT"
 )
