@@ -5,6 +5,7 @@ language: python
 
 env:
   - DOCKER_COMPOSE_VERSION=1.23.2
+  - CODECOV_TOKEN="7b03bdb0-6425-4a52-b78a-b8cfb92206b5"
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
