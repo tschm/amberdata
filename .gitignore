@@ -23,7 +23,8 @@ index
 .pytest_cache
 
 .ipynb_checkpoints
+
 *.egg-info
 dist
-
 config/settings.cfg
+

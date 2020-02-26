@@ -5,10 +5,7 @@ services:
        context: .
        dockerfile: Dockerfile
        target: production
-
      volumes:
        # sharing volumes like this is won't respect the .dockerignore file!
        - ./pyamber:/amberdata/pyamber:ro
        - ./config:/amberdata/config:ro
-     env_file:
-       - .env
