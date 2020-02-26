@@ -10,7 +10,7 @@ if __name__ == '__main__':
     amberdata.init_app(app)
 
     with app.app_context():
-        response = amberdata.request.health
-        x = amberdata.request.price_history("eth_usd", timeInterval=TimeInterval.DAYS, startDate=pd.Timestamp("2020-01-12"), endDate=pd.Timestamp("2020-01-13"))
+        assert amberdata.request.health
+        x = amberdata.request.price_history("eth_usd", timeInterval=TimeInterval.DAYS, startDate=pd.Timestamp("2020-01-12"), endDate=pd.Timestamp("2020-01-12"))
         print(x)
 
