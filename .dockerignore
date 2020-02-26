@@ -3,20 +3,11 @@
 # Ignore Everything
 **
 
-!requirements.txt
-
-!work
 !test
 !pyamber
 !config
 !source
 
-!start.py
-!caching.py
-!caching_clear.py
-!build_whoosh.py
-!start_dev.py
-
 **/__pycache__
 **/*.pyc
-.ipynb_checkpoints
+
