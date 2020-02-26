@@ -6,7 +6,6 @@ from pyamber.request import TimeInterval
 
 if __name__ == '__main__':
     app = Flask(__name__)
-    #app.config.from_envvar('APPLICATION_SETTINGS')
     app.config.from_pyfile('/amberdata/config/settings.cfg')
     amberdata.init_app(app)
 

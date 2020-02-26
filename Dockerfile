@@ -8,37 +8,27 @@ MAINTAINER Thomas Schmelzer "thomas.schmelzer@gmail.com"
 COPY pyamber         /amberdata/pyamber
 
 # We don't make pyserver installable. It's enough to copy it!
-COPY requirements.txt /tmp/requirements.txt
+#COPY requirements.txt /tmp/requirements.txt
 
 # install all requirements...
-RUN conda install -y -c conda-forge nomkl pandas=0.25.3 requests=2.22.0 && \
-    conda clean -y --all && \
-    pip install --no-cache-dir -r /tmp/requirements.txt && \
-    rm -r /tmp/requirements.txt
+RUN conda install -y -c conda-forge nomkl pandas=0.25.3 requests=2.22.0 flask=1.1.1 && \
+    conda clean -y --all
+    #&& \
+    #pip install --no-cache-dir -r /tmp/requirements.txt && \
+    #rm -r /tmp/requirements.txt
 
 
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as production
-# or shall I do copy?
-# COPY --from=builder / /
-
-ENV APPLICATION_SETTINGS="/amberdata/config/settings.cfg"
 
 COPY config           /amberdata/config
 
-# copy files such as build_whoosh, etc.
-# COPY *.py             /amberdata/
-
-# Expose Jupyter port & cmd
-# EXPOSE 8000
 WORKDIR amberdata
-
-#CMD python start.py
 
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as test
 
-ENV APPLICATION_SETTINGS="/amberdata/test/config/settings.cfg"
+#ENV APPLICATION_SETTINGS="/amberdata/test/config/settings.cfg"
 
 WORKDIR amberdata
 

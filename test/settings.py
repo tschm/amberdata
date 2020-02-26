@@ -7,7 +7,7 @@ from pyamber.flask_amberdata import amberdata
 def client():
     app = Flask(__name__)
     # initialize the config of the app object
-    app.config.from_envvar('APPLICATION_SETTINGS')
+    app.config.from_pyfile('config/settings.cfg')
 
     # move into the app context and initialize the amberdata project
     with app.app_context():
