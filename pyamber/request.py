@@ -22,8 +22,8 @@ class TimeInterval(Enum):
 
 
 class AmberRequest(object):
-    def __init__(self, key=None):
-        self.__key = key or os.environ["AMBER_KEY"]
+    def __init__(self, key):
+        self.__key = key
 
     @property
     def headers(self):

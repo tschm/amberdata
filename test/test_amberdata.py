@@ -5,7 +5,7 @@ import pytest
 from requests import HTTPError
 
 from pyamber.flask_amberdata import amberdata
-from pyamber.request import TimeInterval, TimeFormat
+from pyamber.request import TimeInterval
 from test.settings import client
 import pandas.util.testing as pdt
 
@@ -22,7 +22,7 @@ def test_history(client):
 
 def test_history_mock(client):
     with patch("requests.get") as mock:
-        amberdata.request.price_history(pair="eth_usd", startDate=pd.Timestamp("2020-01-15"), endDate=pd.Timestamp("2020-01-17"), timeInterval=TimeInterval.HOURS, timeFormat=TimeFormat.MILLISECONDS)
+        amberdata.request.price_history(pair="eth_usd", startDate=pd.Timestamp("2020-01-15"), endDate=pd.Timestamp("2020-01-17"), timeInterval=TimeInterval.HOURS)
         mock.assert_called_once_with(headers={'accept': 'application/json', 'x-api-key': 'UAK1'},
                                      params={'timeInterval': 'hours', 'startDate': 1579046400000, 'endDate': 1579219200000, 'timeFormat': 'milliseconds'},
                                      url='https://web3api.io/api/v2/market/prices/eth_usd/historical')
