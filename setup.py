@@ -1,12 +1,8 @@
 #!/usr/bin/env python
-
 from setuptools import setup, find_packages
 from pyamber import __version__ as version
 
 # read the contents of your README file
-#from os import path
-#this_directory = path.abspath(path.dirname(__file__))
-
 with open('README.md') as f:
     long_description = f.read()
 
