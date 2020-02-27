@@ -63,6 +63,18 @@ class AmberRequest(object):
         request = response.json()["payload"]
         return __payload2frame(request)
 
+
+    @staticmethod
+    def __frames(x):
+        assert "metadata" in x
+        assert "data" in x
+
+        columns = x["metadata"]["columns"]
+        for key, data in x["data"].items():
+            xx = pd.DataFrame(columns=columns, data=data)
+            xx["timestamp"] = xx["timestamp"].apply(lambda x: pd.Timestamp(int(x) * 1e6))
+            yield key, xx.set_index(keys="timestamp")
+
     def ohlcv_history(self, pair, exchange, startDate=None, endDate=None, timeInterval=None):
         startDate = (startDate or pd.Timestamp("today")).value_in_milliseconds
         endDate = (endDate or pd.Timestamp("today")).value_in_milliseconds
@@ -76,37 +88,25 @@ class AmberRequest(object):
 
         response = self.get(url=url, params=params)
 
-        x = response.json()["payload"]
-        columns = x["metadata"]["columns"]
+        for exchange, data in self.__frames(x=response.json()["payload"]):
+            yield exchange, data
 
-        #columns = ['timestamp', 'open', 'high', 'low', 'close', 'volume']
-
-        for key, data in x["data"].items():
-            xx = pd.DataFrame(columns=columns, data=data)
-            xx["timestamp"] = xx["timestamp"].apply(lambda x: pd.Timestamp(int(x) * 1e6))
-
-            yield key, xx.set_index(keys="timestamp")
-
-    def bid_ask_history(self, pair, exchange, startDate=None, endDate=None): #, timeInterval=None):
+    def bid_ask_history(self, pair, exchange, startDate=None, endDate=None):  # , timeInterval=None):
         startDate = (startDate or pd.Timestamp("today")).value_in_milliseconds
         endDate = (endDate or pd.Timestamp("today")).value_in_milliseconds
 
-        #timeInterval = timeInterval or TimeInterval.HOURS
+        # timeInterval = timeInterval or TimeInterval.HOURS
 
         url = "https://web3api.io/api/v2/market/tickers/{pair}/historical".format(pair=pair)
 
-        params = {"startDate": startDate, "endDate": endDate, "exchange": exchange} #, "timeInterval": timeInterval.value}
+        params = {"startDate": startDate, "endDate": endDate,
+                  "exchange": exchange}  # , "timeInterval": timeInterval.value}
 
         response = self.get(url=url, params=params)
 
-        x = response.json()["payload"]
-        columns = x["metadata"]["columns"]
+        for exchange, data in self.__frames(x=response.json()["payload"]):
+            data["spread"] = data["ask"] - data["bid"]
+            data["rel. spread"] = data["spread"] / data["mid"]
+            data["rel. spread in BPs"] = 1e4 * data["rel. spread"]
 
-        for key, data in x["data"].items():
-            xx = pd.DataFrame(columns=columns, data=data)
-            xx["timestamp"] = xx["timestamp"].apply(lambda x: pd.Timestamp(int(x) * 1e6))
-            xx["spread"] = xx["ask"] - xx["bid"]
-            xx["rel. spread"] = xx["spread"]/xx["mid"]
-            xx["rel. spread in BPs"] = 1e4*xx["rel. spread"]
-
-            yield key, xx.set_index(keys="timestamp")
+            yield exchange, data
