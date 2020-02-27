@@ -4,8 +4,7 @@ from enum import Enum
 import requests
 import pandas as pd
 
-
-pd.Timestamp.value_in_milliseconds = property(lambda self: int(self.value*1e-6))
+pd.Timestamp.value_in_milliseconds = property(lambda self: int(self.value * 1e-6))
 
 
 class TimeFormat(Enum):
@@ -48,18 +47,66 @@ class AmberRequest(object):
         def __payload2frame(payload):
             return pd.DataFrame({name: __dict2series(ts) for name, ts in payload.items()})
 
-
         startDate = (startDate or pd.Timestamp("today")).value_in_milliseconds
         endDate = (endDate or pd.Timestamp("today")).value_in_milliseconds
 
-        #gap = endDate - startDate
+        # gap = endDate - startDate
         timeInterval = timeInterval or TimeInterval.HOURS
         timeFormat = TimeFormat.MILLISECONDS
 
-        url="https://web3api.io/api/v2/market/prices/{pair}/historical".format(pair=pair)
-        params = {"timeInterval": timeInterval.value, "startDate": startDate, "endDate": endDate, "timeFormat": timeFormat.value}
+        url = "https://web3api.io/api/v2/market/prices/{pair}/historical".format(pair=pair)
+        params = {"timeInterval": timeInterval.value, "startDate": startDate, "endDate": endDate,
+                  "timeFormat": timeFormat.value}
 
         response = self.get(url=url, params=params)
 
         request = response.json()["payload"]
         return __payload2frame(request)
+
+    def ohlcv_history(self, pair, exchange, startDate=None, endDate=None, timeInterval=None):
+        startDate = (startDate or pd.Timestamp("today")).value_in_milliseconds
+        endDate = (endDate or pd.Timestamp("today")).value_in_milliseconds
+
+        timeInterval = timeInterval or TimeInterval.HOURS
+        timeFormat = TimeFormat.MILLISECONDS
+
+        url = "https://web3api.io/api/v2/market/ohlcv/{pair}/historical".format(pair=pair)
+        params = {"timeInterval": timeInterval.value, "startDate": startDate, "endDate": endDate,
+                  "timeFormat": timeFormat.value, "exchange": exchange}
+
+        response = self.get(url=url, params=params)
+
+        x = response.json()["payload"]
+        columns = x["metadata"]["columns"]
+
+        #columns = ['timestamp', 'open', 'high', 'low', 'close', 'volume']
+
+        for key, data in x["data"].items():
+            xx = pd.DataFrame(columns=columns, data=data)
+            xx["timestamp"] = xx["timestamp"].apply(lambda x: pd.Timestamp(int(x) * 1e6))
+
+            yield key, xx.set_index(keys="timestamp")
+
+    def bid_ask_history(self, pair, exchange, startDate=None, endDate=None): #, timeInterval=None):
+        startDate = (startDate or pd.Timestamp("today")).value_in_milliseconds
+        endDate = (endDate or pd.Timestamp("today")).value_in_milliseconds
+
+        #timeInterval = timeInterval or TimeInterval.HOURS
+
+        url = "https://web3api.io/api/v2/market/tickers/{pair}/historical".format(pair=pair)
+
+        params = {"startDate": startDate, "endDate": endDate, "exchange": exchange} #, "timeInterval": timeInterval.value}
+
+        response = self.get(url=url, params=params)
+
+        x = response.json()["payload"]
+        columns = x["metadata"]["columns"]
+
+        for key, data in x["data"].items():
+            xx = pd.DataFrame(columns=columns, data=data)
+            xx["timestamp"] = xx["timestamp"].apply(lambda x: pd.Timestamp(int(x) * 1e6))
+            xx["spread"] = xx["ask"] - xx["bid"]
+            xx["rel. spread"] = xx["spread"]/xx["mid"]
+            xx["rel. spread in BPs"] = 1e4*xx["rel. spread"]
+
+            yield key, xx.set_index(keys="timestamp")
