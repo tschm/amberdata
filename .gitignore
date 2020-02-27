@@ -1,6 +1,5 @@
 *.pyc
 .idea
-env
 tmp
 *.log
 build
@@ -8,21 +7,15 @@ html-coverage
 html-report
 
 
-sandbox
-.env
-
-#*.ipynb
 *.dot
 *.svg
 
 *.doctrees
 artifacts
-cache
 index
 
 .pytest_cache
 
-.ipynb_checkpoints
 
 *.egg-info
 dist
