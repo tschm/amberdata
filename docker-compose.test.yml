@@ -7,5 +7,6 @@ services:
       target: test
 
     volumes:
+      - ./pyamber:/amberdata/pyamber:ro
       - ./test:/amberdata/test:ro
       - ./artifacts:/amberdata/artifacts
