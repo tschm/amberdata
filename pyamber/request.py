@@ -32,7 +32,7 @@ class AmberRequest(object):
         response = requests.get(url=url, params=params, headers=self.headers)
         # check that the response is ok
         response.raise_for_status()
-        return response
+        return response.json()["payload"]
 
     @property
     def health(self):
@@ -58,7 +58,7 @@ class AmberRequest(object):
         params = {"timeInterval": timeInterval.value, "startDate": startDate, "endDate": endDate,
                   "timeFormat": timeFormat.value}
 
-        payload = self.get(url=url, params=params).json()["payload"]
+        payload = self.get(url=url, params=params)
         return __payload2frame(payload)
 
 
@@ -82,10 +82,28 @@ class AmberRequest(object):
         params = {"timeInterval": timeInterval.value, "startDate": startDate, "endDate": endDate,
                   "timeFormat": timeFormat.value, "exchange": exchange}
 
-        payload = self.get(url=url, params=params).json()["payload"]
+        payload = self.get(url=url, params=params)
 
         for exchange, data in self.__frames(payload):
             yield exchange, data
+
+    def ohlcv_latest(self, pair, exchange):
+        url = "https://web3api.io/api/v2/market/ohlcv/{pair}/latest".format(pair=pair)
+        params = {"exchange": exchange}
+
+        payload = self.get(url=url, params=params)
+
+        for exchange, data in payload.items():
+            if data["timestamp"]:
+                #x = pd.Series(data)
+                data["timestamp"] = pd.Timestamp(int(data["timestamp"])*1e6)
+                yield exchange, pd.Series(data)
+
+        #print(payload)
+
+        #assert False
+
+
 
     def bid_ask_history(self, pair, exchange, startDate=None, endDate=None):
         startDate = (startDate or pd.Timestamp("today")).value_in_milliseconds
@@ -95,7 +113,7 @@ class AmberRequest(object):
 
         params = {"startDate": startDate, "endDate": endDate, "exchange": exchange}
 
-        payload = self.get(url=url, params=params).json()["payload"]
+        payload = self.get(url=url, params=params)
 
         for exchange, data in self.__frames(payload):
             data["spread"] = data["ask"] - data["bid"]
@@ -103,3 +121,15 @@ class AmberRequest(object):
             data["rel. spread in BPs"] = 1e4 * data["rel. spread"]
 
             yield exchange, data
+
+    def exchanges(self, pair=None):
+
+        url = "https://web3api.io/api/v2/market/exchanges"
+        pair = pair or []
+
+        params = {"pair": pair}
+        payload = self.get(url=url, params=params)
+
+        return payload.items()
+            #yield exchange, data
+
