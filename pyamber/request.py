@@ -1,6 +1,5 @@
 from enum import Enum
 
-#import requests
 import pandas as pd
 import requests
 
@@ -36,7 +35,7 @@ class AmberRequest(object):
 
     @property
     def health(self):
-        return self.get(url="https://web3api.io/health")
+        return requests.get(url="https://web3api.io/health")
 
     def price_history(self, pair, timeInterval=None, startDate=None, endDate=None):
         # todo: pagination
