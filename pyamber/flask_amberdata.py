@@ -24,11 +24,8 @@ class Amberdata(object):
         if config is None or not isinstance(config, dict):
             raise InvalidSettingsError('Invalid application configuration')
 
-        # Get sanitized connection settings based on the config
-        conn_settings = config["AMBERDATA"]
-
         # Otherwise, return a single connection
-        return AmberRequest(key=conn_settings["X-API-KEY"])
+        return AmberRequest(key=config["AMBERDATA"]["x-api-key"])
 
     def init_app(self, app, config=None):
         if not app or not isinstance(app, Flask):
@@ -68,4 +65,3 @@ class Amberdata(object):
 
 
 amberdata = Amberdata()
-

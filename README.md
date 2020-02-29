@@ -27,7 +27,7 @@ if __name__ == '__main__':
 ## Settings.cfg
 We recommend to define a configuration file `(*.cfg)` containing
 ```
-AMBERDATA = {'X-API-KEY': 'ENTER YOUR KEY HERE'}
+AMBERDATA = {'x-api-key': 'ENTER YOUR KEY HERE'}
 ```
 
 ## Flask-AmberData

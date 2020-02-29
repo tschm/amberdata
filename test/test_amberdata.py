@@ -50,6 +50,7 @@ def test_history_bid_ask(get_bid_ask):
     get_bid_ask.assert_called_once_with(params={'endDate': 1578873600000, 'startDate': 1578787200000, 'exchange': "bitfinex"},
                                         url='https://web3api.io/api/v2/market/tickers/eth_usd/historical')
 
+
 def test_history_bid_ask_2():
     with requests_mock.Mocker() as m:
         m.get("https://web3api.io/api/v2/market/tickers/eth_usd/historical",

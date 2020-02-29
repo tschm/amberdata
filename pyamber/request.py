@@ -81,10 +81,7 @@ class AmberRequest(object):
         params = {"timeInterval": timeInterval.value, "startDate": startDate, "endDate": endDate,
                   "timeFormat": timeFormat.value, "exchange": exchange}
 
-        payload = self.get(url=url, params=params)
-
-        for exchange, data in self.__frames(payload):
-            yield exchange, data
+        return self.__frames(self.get(url=url, params=params))
 
     def ohlcv_latest(self, pair, exchange):
         url = "https://web3api.io/api/v2/market/ohlcv/{pair}/latest".format(pair=pair)
@@ -97,12 +94,6 @@ class AmberRequest(object):
                 #x = pd.Series(data)
                 data["timestamp"] = pd.Timestamp(int(data["timestamp"])*1e6)
                 yield exchange, pd.Series(data)
-
-        #print(payload)
-
-        #assert False
-
-
 
     def bid_ask_history(self, pair, exchange, startDate=None, endDate=None):
         startDate = (startDate or pd.Timestamp("today")).value_in_milliseconds

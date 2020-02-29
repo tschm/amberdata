@@ -23,6 +23,12 @@ def test_init_amberdata():
     a = Amberdata(app=app)
     assert a
 
+    with pytest.raises(RuntimeError):
+        assert a.request
+
+    with app.app_context():
+        assert a.request
+
 
 def test_incorrect_config():
     app = Flask(__name__)

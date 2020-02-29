@@ -17,9 +17,9 @@ if __name__ == '__main__':
             print(exchange)
             print(data)
 
-        for exchange, data in amberdata.request.exchanges(pair="eth_usd"):
-            print(exchange)
-            print(len(data))
+        #for exchange, data in amberdata.request.exchanges(pair="eth_usd"):
+        #    print(exchange)
+        #    print(len(data))
         #for ex, data in amberdata.request.bid_ask_history("eth_usd", exchange="bitfinex,bitstamp", startDate=pd.Timestamp("2020-01-12"), endDate=pd.Timestamp("2020-01-16")):
         #    print(ex)
         #    print(data)
