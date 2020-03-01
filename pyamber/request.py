@@ -19,27 +19,50 @@ class TimeInterval(Enum):
     MINUTES = "minutes"
 
 
-class AmberRequest(object):
-    def __init__(self, key):
-        self.__key = key
+class _OHLCV_Request(object):
+    def __init__(self, request):
+        self.__request = request
 
-    @property
-    def headers(self):
-        return {"accept": "application/json", "x-api-key": self.__key}
+    def history(self, pair, exchange, startDate=None, endDate=None, timeInterval=None):
+        startDate = (startDate or pd.Timestamp("today")).value_in_milliseconds
+        endDate = (endDate or pd.Timestamp("today")).value_in_milliseconds
 
-    def get(self, url, params=None):
-        response = requests.get(url=url, params=params, headers=self.headers)
-        # check that the response is ok
-        response.raise_for_status()
-        return response.json()["payload"]
+        timeInterval = timeInterval or TimeInterval.HOURS
+        timeFormat = TimeFormat.MILLISECONDS
 
-    @property
-    def health(self):
-        return requests.get(url="https://web3api.io/health")
+        url = "https://web3api.io/api/v2/market/ohlcv/{pair}/historical".format(pair=pair)
+        params = {"timeInterval": timeInterval.value, "startDate": startDate, "endDate": endDate,
+                  "timeFormat": timeFormat.value, "exchange": exchange}
 
-    def price_history(self, pair, timeInterval=None, startDate=None, endDate=None):
-        # todo: pagination
+        return AmberRequest._frames(self.__request.get(url=url, params=params))
 
+    def latest(self, pair, exchange):
+        url = "https://web3api.io/api/v2/market/ohlcv/{pair}/latest".format(pair=pair)
+        params = {"exchange": exchange}
+
+        payload = self.__request.get(url=url, params=params)
+
+        for exchange, data in payload.items():
+            if data["timestamp"]:
+                data["timestamp"] = pd.Timestamp(int(data["timestamp"])*1e6)
+                yield exchange, pd.Series(data)
+
+
+class _Price_Request(object):
+    def __init__(self, request):
+        self.__request = request
+
+    def latest(self, pair):
+        url = "https://web3api.io/api/v2/market/prices/{pair}/latest".format(pair=pair)
+        params = {"timeFormat": TimeFormat.MILLISECONDS.value}
+        payload = self.__request.get(url=url, params=params)
+        print(payload)
+        for exchange, data in payload.items():
+            if data["timestamp"]:
+                data["timestamp"] = pd.Timestamp(int(data["timestamp"]) * 1e6)
+                yield exchange, pd.Series(data)
+
+    def history(self, pair, startDate=None, endDate=None, timeInterval=None):
         def __dict2series(ts):
             return pd.Series({pd.Timestamp(1e6 * int(x["timestamp"])): x["price"] for x in ts})
 
@@ -57,45 +80,15 @@ class AmberRequest(object):
         params = {"timeInterval": timeInterval.value, "startDate": startDate, "endDate": endDate,
                   "timeFormat": timeFormat.value}
 
-        payload = self.get(url=url, params=params)
+        payload = self.__request.get(url=url, params=params)
         return __payload2frame(payload)
 
 
-    @staticmethod
-    def __frames(x):
-        data = x.get("data", {})
+class _BidAsk_Request(object):
+    def __init__(self, request):
+        self.__request = request
 
-        for key, data in data.items():
-            frame = pd.DataFrame(columns=x["metadata"]["columns"], data=data)
-            frame["timestamp"] = frame["timestamp"].apply(lambda t: pd.Timestamp(int(t) * 1e6))
-            yield key, frame.set_index(keys="timestamp")
-
-    def ohlcv_history(self, pair, exchange, startDate=None, endDate=None, timeInterval=None):
-        startDate = (startDate or pd.Timestamp("today")).value_in_milliseconds
-        endDate = (endDate or pd.Timestamp("today")).value_in_milliseconds
-
-        timeInterval = timeInterval or TimeInterval.HOURS
-        timeFormat = TimeFormat.MILLISECONDS
-
-        url = "https://web3api.io/api/v2/market/ohlcv/{pair}/historical".format(pair=pair)
-        params = {"timeInterval": timeInterval.value, "startDate": startDate, "endDate": endDate,
-                  "timeFormat": timeFormat.value, "exchange": exchange}
-
-        return self.__frames(self.get(url=url, params=params))
-
-    def ohlcv_latest(self, pair, exchange):
-        url = "https://web3api.io/api/v2/market/ohlcv/{pair}/latest".format(pair=pair)
-        params = {"exchange": exchange}
-
-        payload = self.get(url=url, params=params)
-
-        for exchange, data in payload.items():
-            if data["timestamp"]:
-                #x = pd.Series(data)
-                data["timestamp"] = pd.Timestamp(int(data["timestamp"])*1e6)
-                yield exchange, pd.Series(data)
-
-    def bid_ask_history(self, pair, exchange, startDate=None, endDate=None):
+    def history(self, pair, exchange, startDate=None, endDate=None):
         startDate = (startDate or pd.Timestamp("today")).value_in_milliseconds
         endDate = (endDate or pd.Timestamp("today")).value_in_milliseconds
 
@@ -103,14 +96,65 @@ class AmberRequest(object):
 
         params = {"startDate": startDate, "endDate": endDate, "exchange": exchange}
 
-        payload = self.get(url=url, params=params)
+        payload = self.__request.get(url=url, params=params)
 
-        for exchange, data in self.__frames(payload):
+        for exchange, data in AmberRequest._frames(payload):
             data["spread"] = data["ask"] - data["bid"]
             data["rel. spread"] = data["spread"] / data["mid"]
             data["rel. spread in BPs"] = 1e4 * data["rel. spread"]
 
             yield exchange, data
+
+    def latest(self, pair, exchange):
+        url = "https://web3api.io/api/v2/market/tickers/{pair}/latest".format(pair=pair)
+        params = {"exchange": exchange}
+
+        payload = self.__request.get(url=url, params=params)
+
+        for exchange, data in payload.items():
+            if data["timestamp"]:
+                data["timestamp"] = pd.Timestamp(int(data["timestamp"])*1e6)
+                yield exchange, pd.Series(data)
+
+
+class AmberRequest(object):
+    def __init__(self, key):
+        self.__key = key
+
+    @property
+    def prices(self):
+        return _Price_Request(request=self)
+
+    @property
+    def ohlcv(self):
+        return _OHLCV_Request(request=self)
+
+    @property
+    def bid_ask(self):
+        return _BidAsk_Request(request=self)
+
+    @property
+    def headers(self):
+        return {"accept": "application/json", "x-api-key": self.__key}
+
+    def get(self, url, params=None):
+        response = requests.get(url=url, params=params, headers=self.headers)
+        # check that the response is ok
+        response.raise_for_status()
+        return response.json()["payload"]
+
+    @property
+    def health(self):
+        return requests.get(url="https://web3api.io/health")
+
+    @staticmethod
+    def _frames(x):
+        data = x.get("data", {})
+
+        for key, data in data.items():
+            frame = pd.DataFrame(columns=x["metadata"]["columns"], data=data)
+            frame["timestamp"] = frame["timestamp"].apply(lambda t: pd.Timestamp(int(t) * 1e6))
+            yield key, frame.set_index(keys="timestamp")
 
     def exchanges(self, pair=None):
 
