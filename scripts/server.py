@@ -28,11 +28,11 @@ if __name__ == '__main__':
         #     print(exchange)
         #     print(data)
 
-        for exchange, data in amberdata.request.bid_ask.latest("eth_usd", exchange="bitfinex,bitstamp"):
-            print(exchange)
-            print(data)
+        #for exchange, data in amberdata.request.bid_ask.latest("eth_usd", exchange="bitfinex,bitstamp"):
+        #    print(exchange)
+        #    print(data)
 
-        for exchange, data in amberdata.request.bid_ask.history("eth_usd", exchange="bitfinex,bitstamp", startDate=pd.Timestamp("2020-01-12"),endDate=pd.Timestamp("2020-01-13")):
+        for exchange, data in amberdata.request.ohlcv.hh("eth_usd", exchange="bitfinex,bitstamp", startDate=pd.Timestamp("2019-01-01"),endDate=pd.Timestamp("2019-07-01"), timeInterval=TimeInterval.DAYS, max=86400*1000*20):
             print(exchange)
             print(data)
 

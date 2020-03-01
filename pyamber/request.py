@@ -1,7 +1,10 @@
 from enum import Enum
 
 import pandas as pd
+
 import requests
+
+from pyamber.intervals import Intervals
 
 pd.Timestamp.value_in_milliseconds = property(lambda self: int(self.value * 1e-6))
 
@@ -23,6 +26,21 @@ class _OHLCV_Request(object):
     def __init__(self, request):
         self.__request = request
 
+    def hh(self, pair, exchange, startDate=None, endDate=None, timeInterval=None, max=86400*1000*10):
+        startDate = startDate or pd.Timestamp("today")
+        endDate = endDate or pd.Timestamp("today")
+
+        periods = Intervals(startDate=startDate, endDate=endDate, max=max)
+        d = {e: pd.DataFrame() for e in exchange.split(",")}
+
+        for start, end in periods.intervals:
+            for exchange, data in self.history(pair, exchange, startDate=start, endDate=end, timeInterval=timeInterval):
+                d[exchange] = pd.concat((d[exchange], data), axis=0)
+
+        return d.items()
+
+
+
     def history(self, pair, exchange, startDate=None, endDate=None, timeInterval=None):
         startDate = (startDate or pd.Timestamp("today")).value_in_milliseconds
         endDate = (endDate or pd.Timestamp("today")).value_in_milliseconds
@@ -31,6 +49,7 @@ class _OHLCV_Request(object):
         timeFormat = TimeFormat.MILLISECONDS
 
         url = "https://web3api.io/api/v2/market/ohlcv/{pair}/historical".format(pair=pair)
+
         params = {"timeInterval": timeInterval.value, "startDate": startDate, "endDate": endDate,
                   "timeFormat": timeFormat.value, "exchange": exchange}
 
@@ -44,7 +63,7 @@ class _OHLCV_Request(object):
 
         for exchange, data in payload.items():
             if data["timestamp"]:
-                data["timestamp"] = pd.Timestamp(int(data["timestamp"])*1e6)
+                data["timestamp"] = pd.Timestamp(int(data["timestamp"]) * 1e6)
                 yield exchange, pd.Series(data)
 
 
@@ -56,7 +75,7 @@ class _Price_Request(object):
         url = "https://web3api.io/api/v2/market/prices/{pair}/latest".format(pair=pair)
         params = {"timeFormat": TimeFormat.MILLISECONDS.value}
         payload = self.__request.get(url=url, params=params)
-        print(payload)
+
         for exchange, data in payload.items():
             if data["timestamp"]:
                 data["timestamp"] = pd.Timestamp(int(data["timestamp"]) * 1e6)
@@ -113,7 +132,7 @@ class _BidAsk_Request(object):
 
         for exchange, data in payload.items():
             if data["timestamp"]:
-                data["timestamp"] = pd.Timestamp(int(data["timestamp"])*1e6)
+                data["timestamp"] = pd.Timestamp(int(data["timestamp"]) * 1e6)
                 yield exchange, pd.Series(data)
 
 
@@ -157,7 +176,6 @@ class AmberRequest(object):
             yield key, frame.set_index(keys="timestamp")
 
     def exchanges(self, pair=None):
-
         url = "https://web3api.io/api/v2/market/exchanges"
         pair = pair or []
 
@@ -165,5 +183,4 @@ class AmberRequest(object):
         payload = self.get(url=url, params=params)
 
         return payload.items()
-            #yield exchange, data
-
+        # yield exchange, data
