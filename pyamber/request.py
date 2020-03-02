@@ -4,7 +4,7 @@ import pandas as pd
 
 import requests
 
-from pyamber.intervals import Intervals
+from pyamber.intervals import intervals
 
 pd.Timestamp.value_in_milliseconds = property(lambda self: int(self.value * 1e-6))
 
@@ -26,14 +26,14 @@ class _OHLCV_Request(object):
     def __init__(self, request):
         self.__request = request
 
-    def hh(self, pair, exchange, startDate=None, endDate=None, timeInterval=None, max=86400*1000*10):
+    def hh(self, pair, exchange, startDate=None, endDate=None, timeInterval=None, freq=86400*1000*10):
         startDate = startDate or pd.Timestamp("today")
         endDate = endDate or pd.Timestamp("today")
 
-        periods = Intervals(startDate=startDate, endDate=endDate, max=max)
+        #periods = intervals(startDate=startDate, endDate=endDate)
         d = {e: pd.DataFrame() for e in exchange.split(",")}
 
-        for start, end in periods.intervals:
+        for (start, end) in intervals(startDate=startDate, endDate=endDate):
             for exchange, data in self.history(pair, exchange, startDate=start, endDate=end, timeInterval=timeInterval):
                 d[exchange] = pd.concat((d[exchange], data), axis=0)
 
