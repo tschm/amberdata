@@ -19,7 +19,7 @@ from pyamber.request import AmberRequest, TimeInterval
 
 if __name__ == '__main__':
     request = AmberRequest(key="...")
-    f = request.prices.history(pair="eth_usd", timeInterval=TimeInterval.HOURS)
+    f = request.prices.history(pair="eth_usd", time_interval=TimeInterval.HOURS)
     print(f)
 
 ```
@@ -48,7 +48,7 @@ if __name__ == '__main__':
 
     with app.app_context():
         assert amberdata.request.health
-        x = amberdata.request.prices.history("eth_usd", timeInterval=TimeInterval.DAYS, startDate=pd.Timestamp("2020-01-12"), endDate=pd.Timestamp("2020-01-16"))
+        x = amberdata.request.prices.history("eth_usd", time_interval=TimeInterval.DAYS, start_date=pd.Timestamp("2020-01-12"), end_date=pd.Timestamp("2020-01-16"))
         print(x)
 ```
 
