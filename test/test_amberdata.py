@@ -1,5 +1,3 @@
-from unittest.mock import patch
-
 import pandas as pd
 import pytest
 from requests import HTTPError
@@ -66,6 +64,7 @@ def test_prices_latest():
             assert pair == "eth_usd"
             pdt.assert_series_equal(series, read_pd("prices_latest.csv", squeeze=True, index_col=0, parse_dates=True, header=None), check_names=False)
 
+
 def test_ohlcv_latest():
     with requests_mock.Mocker() as m:
         m.get("https://web3api.io/api/v2/market/ohlcv/eth_usd/latest", json=read_json("ohlcv_latest.json"))
@@ -76,6 +75,21 @@ def test_ohlcv_latest():
             x["timestamp"] = pd.Timestamp(x["timestamp"])
 
             for key in {"open", "high", "low", "close", "volume"}:
+                x[key] = float(x[key])
+
+            pdt.assert_series_equal(series, x, check_names=False)
+
+
+def test_bid_ask_latest():
+    with requests_mock.Mocker() as m:
+        m.get("https://web3api.io/api/v2/market/tickers/eth_usd/latest", json=read_json("bidask_latest.json"))
+        for exchange, series in AmberRequest(key="a").bid_ask.latest(pair="eth_usd", exchange="bitfinex"):
+            assert exchange == "bitfinex"
+
+            x = read_pd("bidask_latest.csv", squeeze=True, index_col=0, header=None)
+            x["timestamp"] = pd.Timestamp(x["timestamp"])
+
+            for key in {"bid", "ask", "mid", "last"}:
                 x[key] = float(x[key])
 
             pdt.assert_series_equal(series, x, check_names=False)

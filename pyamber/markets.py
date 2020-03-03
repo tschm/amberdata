@@ -131,11 +131,11 @@ class BidAsk_Request(object):
             if not data.empty:
                 yield e, data.sort_index(ascending=False)
 
-    def latest(self, pair, exchange):
+    def latest(self, pair, exchange, logger=None):
         url = "https://web3api.io/api/v2/market/tickers/{pair}/latest".format(pair=pair)
         params = {"exchange": exchange}
 
-        payload = self.__request.get(url=url, params=params)
+        payload = self.__request.get(url=url, params=params, logger=logger)
 
         for exchange, data in payload.items():
             if data["timestamp"]:

@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "title": "OK",
+  "description": "Successful request",
+  "payload": {
+    "bitfinex": {
+      "timestamp": 1583266140000,
+      "bid": 224.24,
+      "ask": 224.25,
+      "mid": 224.245,
+      "last": 224.21
+    }
+  }
+}
