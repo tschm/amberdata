@@ -1,6 +1,8 @@
 import logging
 
 import requests
+
+from pyamber.features import Features_Request
 from pyamber.markets import OHLCV_Request, Price_Request, BidAsk_Request
 
 
@@ -24,6 +26,10 @@ class AmberRequest(object):
     def headers(self):
         return {"accept": "application/json", "x-api-key": self.__key}
 
+    @property
+    def features(self):
+        return Features_Request(request=self)
+
     def get(self, url, params=None, logger=None):
         log = logger or logging.getLogger(__name__)
 
@@ -39,12 +45,3 @@ class AmberRequest(object):
     def health(self):
         return requests.get(url="https://web3api.io/health")
 
-    def exchanges(self, pair=None):
-        url = "https://web3api.io/api/v2/market/exchanges"
-        pair = pair or []
-
-        params = {"pair": pair}
-        payload = self.get(url=url, params=params)
-
-        return payload.items()
-        # yield exchange, data

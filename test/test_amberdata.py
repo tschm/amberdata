@@ -83,3 +83,10 @@ def test_prices_history():
         m.get("https://web3api.io/api/v2/market/prices/eth_usd/historical", json=read_json("prices_history.json"))
         x = AmberRequest(key="a").prices.history(pair="eth_usd", start_date=pd.Timestamp("2020-02-12"), end_date=pd.Timestamp("2020-02-13"), time_interval=TimeInterval.DAYS)
         pdt.assert_frame_equal(x, read_pd("prices_history.csv", index_col=0, parse_dates=True))
+
+
+def test_exchanges():
+    with requests_mock.Mocker() as m:
+        m.get("https://web3api.io/api/v2/market/exchanges?pair=eth_usd", json=read_json("exchanges.json"))
+        xxx = [exchange for exchange, data in AmberRequest(key="a").features.exchanges(pair="eth_usd")]
+        assert xxx == ["bitfinex", "bitstamp", "gdax", "gemini", "kraken"]

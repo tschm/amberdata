@@ -59,3 +59,9 @@ if __name__ == '__main__':
         for exchange, series in request.ohlcv.history(pair="eth_usd", exchange="bitfinex", start_date=pd.Timestamp("2020-01-01"), end_date=pd.Timestamp("2020-02-20"), time_interval=TimeInterval.DAYS, logger=log):
             series.to_csv(output, header=True)
             print(output.getvalue())
+
+        output = StringIO()
+        for exchange, data in request.features.exchanges(pair="eth_usd", logger=log):
+            print(exchange)
+            print(data)
+
