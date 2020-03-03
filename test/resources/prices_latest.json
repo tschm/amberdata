@@ -1,0 +1,11 @@
+{
+  "status": 200,
+  "title": "OK",
+  "description": "Successful request",
+  "payload": {
+    "eth_usd": {
+      "timestamp": 1583257440000,
+      "price": "222.9220000000000000"
+    }
+  }
+}

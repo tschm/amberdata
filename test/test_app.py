@@ -23,6 +23,7 @@ def test_init_amberdata():
     a = Amberdata(app=app)
     assert a
 
+    # you need to be in the correct context to use a.request
     with pytest.raises(RuntimeError):
         assert a.request
 
@@ -35,8 +36,9 @@ def test_incorrect_config():
     # initialize the config of the app object
     app.config.from_pyfile('/amberdata/test/config/settings.cfg')
 
+    # config has to be a dictionary
     with pytest.raises(InvalidSettingsError):
-        a = Amberdata(app=app, config=[5.0])
+        Amberdata(app=app, config=[5.0])
 
 
 def test_initapp_double():

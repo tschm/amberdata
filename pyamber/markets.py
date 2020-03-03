@@ -1,3 +1,5 @@
+import logging
+
 import pandas as pd
 
 from pyamber.enum import TimeInterval, TimeFormat
@@ -11,7 +13,7 @@ class OHLCV_Request(object):
     def __init__(self, request):
         self.__request = request
 
-    def history(self, pair, exchange, start_date=None, end_date=None, time_interval=None):
+    def history(self, pair, exchange, start_date=None, end_date=None, time_interval=None, logger=None):
         start_date = start_date or pd.Timestamp("today")
         end_date = end_date or pd.Timestamp("today")
 
@@ -30,7 +32,7 @@ class OHLCV_Request(object):
                       "endDate": end.value_in_milliseconds, "timeFormat": TimeFormat.MILLISECONDS.value,
                       "exchange": exchange}
 
-            for e, data in frames(self.__request.get(url=url, params=params)):
+            for e, data in frames(self.__request.get(url=url, params=params, logger=logger)):
                 d[e] = pd.concat((d[e], data), axis=0)
 
         # {exchange : data...}
@@ -38,11 +40,11 @@ class OHLCV_Request(object):
             if not data.empty:
                 yield e, data.sort_index(ascending=False)
 
-    def latest(self, pair, exchange):
+    def latest(self, pair, exchange, logger=None):
         url = "https://web3api.io/api/v2/market/ohlcv/{pair}/latest".format(pair=pair)
         params = {"exchange": exchange}
 
-        payload = self.__request.get(url=url, params=params)
+        payload = self.__request.get(url=url, params=params, logger=logger)
 
         for exchange, data in payload.items():
             if data["timestamp"]:
@@ -54,21 +56,22 @@ class Price_Request(object):
     def __init__(self, request):
         self.__request = request
 
-    def latest(self, pair):
+    def latest(self, pair, logger=None):
         def __dict2series(x):
             return pd.Series({pd.Timestamp(1e6 * int(x["timestamp"])): x["price"]})
 
         url = "https://web3api.io/api/v2/market/prices/{pair}/latest".format(pair=pair)
         params = {"timeFormat": TimeFormat.MILLISECONDS.value}
-        payload = self.__request.get(url=url, params=params)
+        payload = self.__request.get(url=url, params=params, logger=logger)
 
         for exchange, data in payload.items():
             if data["timestamp"]:
-                yield exchange, __dict2series(data)
+                yield exchange, __dict2series(data).apply(float)
 
-    def history(self, pair, start_date=None, end_date=None, time_interval=None):
+    def history(self, pair, start_date=None, end_date=None, time_interval=None, logger=None):
+
         def __dict2series(ts):
-            return pd.Series({pd.Timestamp(1e6 * int(x["timestamp"])): x["price"] for x in ts})
+            return pd.Series({pd.Timestamp(1e6 * int(x["timestamp"])): float(x["price"]) for x in ts})
 
         def __payload2frame(payload):
             return pd.DataFrame({name: __dict2series(ts) for name, ts in payload.items()})
@@ -88,7 +91,7 @@ class Price_Request(object):
         for start, end in intervals(start_date=start_date, end_date=end_date, freq=pd.Timedelta(days=1)):
             params = {"timeInterval": time_interval.value, "startDate": start.value_in_milliseconds,
                       "endDate": end.value_in_milliseconds, "timeFormat": TimeFormat.MILLISECONDS.value}
-            payload = self.__request.get(url=url, params=params)
+            payload = self.__request.get(url=url, params=params, logger=logger)
             frame = pd.concat((frame, __payload2frame(payload)), axis=0)
 
         return frame.sort_index(ascending=False)

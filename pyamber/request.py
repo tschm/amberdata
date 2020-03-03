@@ -1,3 +1,5 @@
+import logging
+
 import requests
 from pyamber.markets import OHLCV_Request, Price_Request, BidAsk_Request
 
@@ -22,10 +24,15 @@ class AmberRequest(object):
     def headers(self):
         return {"accept": "application/json", "x-api-key": self.__key}
 
-    def get(self, url, params=None):
+    def get(self, url, params=None, logger=None):
+        log = logger or logging.getLogger(__name__)
+
         response = requests.get(url=url, params=params, headers=self.headers)
         # check that the response is ok
         response.raise_for_status()
+
+        log.debug(response.json())
+
         return response.json()["payload"]
 
     @property
