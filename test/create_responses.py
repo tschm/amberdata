@@ -50,3 +50,8 @@ if __name__ == '__main__':
             series.to_csv(output, header=False)
             print(output.getvalue())
 
+        output = StringIO()
+        for exchange, series in request.bid_ask.history(pair="eth_usd", exchange="bitfinex", start_date=pd.Timestamp("2020-02-12 23:50:00"), end_date=pd.Timestamp("2020-02-13"), logger=log):
+            series.to_csv(output, header=True)
+            print(output.getvalue())
+

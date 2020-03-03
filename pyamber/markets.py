@@ -101,7 +101,7 @@ class BidAsk_Request(object):
     def __init__(self, request):
         self.__request = request
 
-    def history(self, pair, exchange, start_date=None, end_date=None):
+    def history(self, pair, exchange, start_date=None, end_date=None, logger=None):
         start_date = start_date or pd.Timestamp("today")
         end_date = end_date or pd.Timestamp("today")
 
@@ -114,11 +114,8 @@ class BidAsk_Request(object):
 
         # loop over the intervals
         for start, end in intervals(start_date=start_date, end_date=end_date):
-            print(start, end)
-
             params = {"startDate": start.value_in_milliseconds, "endDate": end.value_in_milliseconds, "exchange": exchange}
-            payload = self.__request.get(url=url, params=params)
-            print(payload)
+            payload = self.__request.get(url=url, params=params, logger=logger)
 
             for e, data in frames(payload):
                 data["spread"] = data["ask"] - data["bid"]

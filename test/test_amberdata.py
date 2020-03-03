@@ -95,6 +95,14 @@ def test_bid_ask_latest():
             pdt.assert_series_equal(series, x, check_names=False)
 
 
+def test_bidask_history():
+    with requests_mock.Mocker() as m:
+        m.get("https://web3api.io/api/v2/market/tickers/eth_usd/historical", json=read_json("bidask_history.json"))
+        for exchange, data in AmberRequest(key="a").bid_ask.history(pair="eth_usd", exchange="bitfinex", start_date=pd.Timestamp("2020-02-12 23:50:00"), end_date=pd.Timestamp("2020-02-13")):
+            assert exchange == "bitfinex"
+            pdt.assert_frame_equal(data, read_pd("bidask_history.csv", index_col=0, parse_dates=True))
+
+
 
 def test_prices_history():
     with requests_mock.Mocker() as m:
