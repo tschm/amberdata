@@ -7,8 +7,6 @@ from pyamber.enum import TimeInterval
 from pyamber.flask_amberdata import amberdata
 from io import StringIO
 
-#def resources(name):
-#    return os.path.join(os.path.dirname(__file__), "resources", name)
 
 if __name__ == '__main__':
     app = Flask(__name__)
@@ -26,11 +24,10 @@ if __name__ == '__main__':
     ch.setLevel(logging.DEBUG)
     log.addHandler(ch)
 
-
     with app.app_context():
         request = amberdata.request
+
         output = StringIO()
-        #x = request.prices.history(pair="eth_usd", start_date=pd.Timestamp("2020-02-12"), end_date=pd.Timestamp("2020-02-13"), logger=log)
         for exchange, series in request.prices.latest(pair="eth_usd", logger=log):
             series.to_csv(output)
             print(output.getvalue())
