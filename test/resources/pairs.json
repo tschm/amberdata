@@ -3,145 +3,22 @@
   "title": "OK",
   "description": "Successful request",
   "payload": {
-    "bitfinex": {
-      "eth_usd": {
+    "btc_eur": {
+      "bitfinex": {
         "ticker": {
-          "startDate": 1551074220000,
-          "endDate": 1583271540000
+          "startDate": 1551052800000,
+          "endDate": 1554854400000
         },
         "ohlc": {
-          "startDate": 1548979200000,
-          "endDate": 1583271420000
-        },
-        "trade": {
-          "startDate": 1457539475000,
-          "endDate": 1583268398000
-        },
-        "order_book_update": {
-          "startDate": 1557527346000,
-          "endDate": 1583270399000
-        },
-        "order_book_best_bid_offer": {
-          "startDate": 1557260148000,
-          "endDate": 1583268240000
-        },
-        "order_book": {
-          "startDate": 1551074220000,
-          "endDate": 1583271540000
-        }
-      }
-    },
-    "bitstamp": {
-      "eth_usd": {
-        "ticker": {
-          "startDate": 1551074220000,
-          "endDate": 1583271540000
-        },
-        "ohlc": {
-          "startDate": 1548892860000,
-          "endDate": 1583271120000
-        },
-        "trade": {
-          "startDate": 1548892891000,
-          "endDate": 1583268388000
-        },
-        "order_book_update": {
-          "startDate": 1557527346000,
-          "endDate": 1583270398000
-        },
-        "order_book_best_bid_offer": {
-          "startDate": 1557260132000,
-          "endDate": 1583268296000
-        },
-        "order_book": {
-          "startDate": 1551074220000,
-          "endDate": 1583271540000
-        }
-      }
-    },
-    "gdax": {
-      "eth_usd": {
-        "ticker": {
-          "startDate": 1551074220000,
-          "endDate": 1583271540000
-        },
-        "ohlc": {
-          "startDate": 1551756780000,
-          "endDate": 1583271360000
-        },
-        "trade": {
-          "startDate": 1463531104000,
-          "endDate": 1583268310000
-        },
-        "order_book_update": {
-          "startDate": -62135596800000,
-          "endDate": 1583269405000
-        },
-        "order_book_best_bid_offer": {
-          "startDate": 1557260100000,
-          "endDate": 1583268240000
-        },
-        "order_book": {
-          "startDate": 1551074220000,
-          "endDate": 1583271540000
-        }
-      }
-    },
-    "gemini": {
-      "eth_usd": {
-        "ticker": {
-          "startDate": 1551074220000,
-          "endDate": 1583271540000
-        },
-        "ohlc": {
-          "startDate": 1551236760000,
-          "endDate": 1583271420000
-        },
-        "trade": {
-          "startDate": 1548950935000,
-          "endDate": 1583268458000
-        },
-        "order_book_update": {
-          "startDate": 1557527346000,
-          "endDate": 1583270399000
-        },
-        "order_book_best_bid_offer": {
-          "startDate": 1557260136000,
-          "endDate": 1583268270000
-        },
-        "order_book": {
-          "startDate": 1551074220000,
-          "endDate": 1583271540000
-        }
-      }
-    },
-    "kraken": {
-      "eth_usd": {
-        "ticker": {
-          "startDate": 1551074220000,
-          "endDate": 1583271540000
-        },
-        "ohlc": {
-          "startDate": 1551829140000,
-          "endDate": 1583271420000
+          "startDate": 1495152000000,
+          "endDate": 1554854400000
         },
         "trade": {
           "startDate": 1548979200000,
-          "endDate": 1583268445000
-        },
-        "order_book_update": {
-          "startDate": 1515859252000,
-          "endDate": 1583270398000
-        },
-        "order_book_best_bid_offer": {
-          "startDate": 1515862046000,
-          "endDate": 1583268240000
-        },
-        "order_book": {
-          "startDate": 1551074220000,
-          "endDate": 1583271540000
+          "endDate": 1554854400000
         }
       }
     }
   }
 }
+
