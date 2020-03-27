@@ -9,7 +9,7 @@ from pyamber.util import frames
 pd.Timestamp.value_in_milliseconds = property(lambda self: int(self.value * 1e-6))
 
 
-class OHLCV_Request(object):
+class OhlcvRequest(object):
     def __init__(self, request):
         self.__request = request
 
@@ -52,7 +52,7 @@ class OHLCV_Request(object):
                 yield exchange, pd.Series(data)
 
 
-class Price_Request(object):
+class PriceRequest(object):
     def __init__(self, request):
         self.__request = request
 
@@ -97,7 +97,7 @@ class Price_Request(object):
         return frame.sort_index(ascending=False)
 
 
-class BidAsk_Request(object):
+class BidAskRequest(object):
     def __init__(self, request):
         self.__request = request
 

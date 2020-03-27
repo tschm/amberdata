@@ -1,10 +1,10 @@
-from pyamber.request import AmberRequest
 from pyamber.enum import TimeInterval
+from pyamber.request import AmberRequest
 
 
 if __name__ == '__main__':
     request = AmberRequest(key="...")
-    f = request.price_history(pair="eth_usd", timeInterval=TimeInterval.HOURS)
+    f = request.prices.history(pair="eth_usd", timeInterval=TimeInterval.HOURS)
     print(f)
 
 

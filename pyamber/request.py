@@ -3,7 +3,7 @@ import logging
 import requests
 
 from pyamber.features import Features_Request
-from pyamber.markets import OHLCV_Request, Price_Request, BidAsk_Request
+from pyamber.markets import OhlcvRequest, PriceRequest, BidAskRequest
 
 
 class AmberRequest(object):
@@ -12,15 +12,15 @@ class AmberRequest(object):
 
     @property
     def prices(self):
-        return Price_Request(request=self)
+        return PriceRequest(request=self)
 
     @property
     def ohlcv(self):
-        return OHLCV_Request(request=self)
+        return OhlcvRequest(request=self)
 
     @property
     def bid_ask(self):
-        return BidAsk_Request(request=self)
+        return BidAskRequest(request=self)
 
     @property
     def headers(self):
