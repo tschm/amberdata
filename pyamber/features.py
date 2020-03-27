@@ -74,5 +74,5 @@ class Features_Request(object):
         payload = self.__request.get(url=url, params=params, logger=logger)
 
         for exchange, data in payload.items():
-            for pair, data in data.items():
-                yield pair, exchange, data
+            for pair, x in data.items():
+                yield pair, exchange, x

@@ -88,5 +88,5 @@ def test_prices_history():
 def test_exchanges():
     with requests_mock.Mocker() as m:
         m.get("https://web3api.io/api/v2/market/exchanges?pair=eth_usd", json=read_json("exchanges.json"))
-        xxx = [exchange for exchange, data in AmberRequest(key="a").features.exchanges(pair="eth_usd")]
+        xxx = [exchange for exchange, pair, data in AmberRequest(key="a").features.exchanges(pair="eth_usd")]
         assert xxx == ["bitfinex", "bitstamp", "gdax", "gemini", "kraken"]
