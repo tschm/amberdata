@@ -1,4 +1,5 @@
-from pyamber.request import AmberRequest, TimeInterval
+from pyamber.request import AmberRequest
+from pyamber.enum import TimeInterval
 
 
 if __name__ == '__main__':
