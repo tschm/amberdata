@@ -1,23 +1,14 @@
+from collections import namedtuple
+
+Feature = namedtuple('Feature', 'exchange pair data')
+
+
 class Features_Request(object):
     def __init__(self, request):
         self.__request = request
 
     def exchanges(self, exchanges=None, pair=None, logger=None):
-        url = "https://web3api.io/api/v2/market/exchanges"
-        pair = pair or []
-        exchanges = exchanges or []
-
-        params = {"pair": pair, "exchange": exchanges}
-        payload = self.__request.get(url=url, params=params, logger=logger)
-
-        for exchange, data in payload.items():
-
-            for pair, x in data.items():
-                yield exchange, pair, x
-
-            #if data[pair]["ticker"]["startDate"]:
-            #    yield exchange, data
-
+        raise NotImplementedError("Please use the function 'pairs'")
 
     def price_pairs(self, logger=None):
         # all price pairs on all exchanges
@@ -36,9 +27,9 @@ class Features_Request(object):
 
         payload = self.__request.get(url=url, params=params, logger=logger)
 
-        for exchange, data in payload.items():
-            for pair, dates in data.items():
-                yield exchange, pair, dates
+        for exchange, x in payload.items():
+            for pair, data in x.items():
+                yield Feature(exchange=exchange, pair=pair, data=data)
 
     def ticker_pairs(self, exchange=None, logger=None):
         url = "https://web3api.io/api/v2/market/tickers/information"
@@ -47,9 +38,9 @@ class Features_Request(object):
 
         payload = self.__request.get(url=url, params=params, logger=logger)
 
-        for exchange, data in payload.items():
-            for pair, dates in data.items():
-                yield exchange, pair, dates
+        for exchange, x in payload.items():
+            for pair, data in x.items():
+                yield Feature(exchange=exchange, pair=pair, data=data)
 
     def pairs(self, exchange=None, pair=None, logger=None):
         url = "https://web3api.io/api/v2/market/pairs"
@@ -61,9 +52,9 @@ class Features_Request(object):
 
         payload = self.__request.get(url=url, params=params, logger=logger)
 
-        for exchange, data in payload.items():
-            for pair, dates in data.items():
-                yield pair, exchange, dates
+        for pair, x in payload.items():
+            for exchange, data in x.items():
+                yield Feature(pair=pair, exchange=exchange, data=data)
 
     def trades(self, exchange=None, logger=None):
         url = "https://web3api.io/api/v2/market/trades/information"
@@ -73,6 +64,6 @@ class Features_Request(object):
         params = {"exchange": exchange}
         payload = self.__request.get(url=url, params=params, logger=logger)
 
-        for exchange, data in payload.items():
-            for pair, x in data.items():
-                yield pair, exchange, x
+        for exchange, x in payload.items():
+            for pair, data in x.items():
+                yield Feature(pair=pair, exchange=exchange, data=data)

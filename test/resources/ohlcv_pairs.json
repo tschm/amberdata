@@ -1,0 +1,25 @@
+{
+  "status": 200,
+  "title": "OK",
+  "description": "Successful request",
+  "payload": {
+    "binance": {
+      "btc_usdt": {
+        "startDate": 1502928000000,
+        "endDate": 1552003200000
+      },
+      "eth_usdt": {
+        "startDate": 1502928000000,
+        "endDate": 1552003200000
+      },
+      "ltc_usdt": {
+        "startDate": 1513123200000,
+        "endDate": 1552003200000
+      },
+      "xrp_usdt": {
+        "startDate": 1525392000000,
+        "endDate": 1552003200000
+      }
+    }
+  }
+}

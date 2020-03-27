@@ -1,0 +1,13 @@
+{
+  "status":200,
+  "title":"OK",
+  "description":"Successful request",
+  "payload":{
+    "bitfinex":{
+      "btc_eur":{
+        "startDate":1551052800000,
+        "endDate":1551312000000
+      }
+    }
+  }
+}

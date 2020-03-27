@@ -1,0 +1,14 @@
+{
+    "status": 200,
+    "title": "OK",
+    "description": "Successful request",
+    "payload": {
+        "binance": {
+            "adx_bnb": {
+                "address": "0x4470bb87d77b963a013db939be332f927f2b992e",
+                "endDate": 1560988800000,
+                "startDate": 1511913600000
+            }
+        }
+    }
+}

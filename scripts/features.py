@@ -10,22 +10,20 @@ if __name__ == '__main__':
     amberdata.init_app(app)
 
     with app.app_context():
-        for exchange, pair, data in amberdata.request.features.exchanges(pair="btc_usd"):
-            print(exchange, pair, data)
+        #for exchange, pair, dates in amberdata.request.features.ohlcv_pairs():
+        #    print(exchange, pair, dates)
 
-        for exchange, pair, dates in amberdata.request.features.ohlcv_pairs():
-            print(exchange, pair, dates)
-
-        for pair, exchange, data in amberdata.request.features.pairs(pair="btc_usd"):
-            print(pair, exchange, data)
+        for feature in amberdata.request.features.pairs():
+            print(feature)
 
         for pair in amberdata.request.features.price_pairs():
             print(pair)
 
-        for exchange, pair, data in amberdata.request.features.ticker_pairs(exchange="bitfinex"):
-            print(exchange, pair, data)
+        for feature in amberdata.request.features.ticker_pairs(exchange="bitfinex"):
+            print(feature)
 
-        for exchange, pair, data in amberdata.request.features.trades(exchange="bitfinex"):
-            print(exchange, pair, data)
+        for feature in amberdata.request.features.trades(exchange="bitfinex"):
+            print(feature)
+
 
 

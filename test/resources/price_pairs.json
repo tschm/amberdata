@@ -1,0 +1,10 @@
+{
+    "description": "Successful request",
+    "payload": [
+        "18c_btc",
+        "18c_eth",
+        "1st_btc"
+    ],
+    "status": 200,
+    "title": "OK"
+}
