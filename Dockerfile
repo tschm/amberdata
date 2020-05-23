@@ -1,5 +1,4 @@
-# Set the base image to Ubuntu
-FROM continuumio/miniconda3:4.8.2 as builder
+FROM python:3.7.7-slim-stretch as builder
 
 # File Author / Maintainer
 MAINTAINER Thomas Schmelzer "thomas.schmelzer@gmail.com"
@@ -8,8 +7,7 @@ MAINTAINER Thomas Schmelzer "thomas.schmelzer@gmail.com"
 COPY pyamber         /amberdata/pyamber
 
 # install all requirements...
-RUN conda install -y -c conda-forge nomkl pandas=0.25.3 requests=2.23.0 flask=1.1.1 && \
-    conda clean -y --all
+RUN pip install --no-cache-dir pandas==0.25.3 requests==2.23.0 flask==1.1.1
 
 WORKDIR amberdata
 # ----------------------------------------------------------------------------------------------------------------------
