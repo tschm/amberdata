@@ -7,7 +7,7 @@ IMAGE := tschm/amberdata
 include pyamber/__init__.py
 PROJECT_VERSION := ${__version__}
 
-.PHONY: help build test tag clean
+.PHONY: help build test tag
 
 .DEFAULT: help
 
@@ -21,26 +21,14 @@ help:
 
 
 build:
-	docker build --target=production -t ${IMAGE}:latest --no-cache .
-	#docker-compose build --no-cache web
+	docker build --target=production --no-cache .
 
 test:
-	mkdir -p artifacts
-	# docker-compose build is somewhat broken ...
-	#docker build --target=test -t webtest:latest .
-	#docker-compose -f docker-compose.test.yml build sut
 	docker-compose -f docker-compose.test.yml run sut
 
 tag: test
 	git tag -a ${PROJECT_VERSION} -m "new tag"
 	git push --tags
 
-clean:
-	docker-compose -f docker-compose.test.yml down -v --rmi all --remove-orphans
-
-pypi: #tag
-	python setup.py sdist
-	twine check dist/*
-	twine upload dist/*
 
 
