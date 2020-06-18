@@ -6,7 +6,7 @@ import requests_mock
 
 from pyamber.enum import TimeInterval
 from pyamber.request import AmberRequest
-import pandas.util.testing as pdt
+import pandas.testing as pt
 
 from test.settings import read_json, read_pd
 
@@ -26,7 +26,7 @@ def test_prices_latest():
         m.get("https://web3api.io/api/v2/market/prices/eth_usd/latest", json=read_json("prices_latest.json"))
         for pair, series in AmberRequest(key="a").prices.latest(pair="eth_usd"):
             assert pair == "eth_usd"
-            pdt.assert_series_equal(series, read_pd("prices_latest.csv", squeeze=True, index_col=0, parse_dates=True, header=None), check_names=False)
+            pt.assert_series_equal(series, read_pd("prices_latest.csv", squeeze=True, index_col=0, parse_dates=True, header=None), check_names=False)
 
 
 def test_ohlcv_latest():
@@ -41,7 +41,7 @@ def test_ohlcv_latest():
             for key in {"open", "high", "low", "close", "volume"}:
                 x[key] = float(x[key])
 
-            pdt.assert_series_equal(series, x, check_names=False)
+            pt.assert_series_equal(series, x, check_names=False)
 
 
 def test_bid_ask_latest():
@@ -56,7 +56,7 @@ def test_bid_ask_latest():
             for key in {"bid", "ask", "mid", "last"}:
                 x[key] = float(x[key])
 
-            pdt.assert_series_equal(series, x, check_names=False)
+            pt.assert_series_equal(series, x, check_names=False)
 
 
 def test_bidask_history():
@@ -64,7 +64,7 @@ def test_bidask_history():
         m.get("https://web3api.io/api/v2/market/tickers/eth_usd/historical", json=read_json("bidask_history.json"))
         for exchange, data in AmberRequest(key="a").bid_ask.history(pair="eth_usd", exchange="bitfinex", start_date=pd.Timestamp("2020-02-12 23:50:00"), end_date=pd.Timestamp("2020-02-13")):
             assert exchange == "bitfinex"
-            pdt.assert_frame_equal(data, read_pd("bidask_history.csv", index_col=0, parse_dates=True))
+            pt.assert_frame_equal(data, read_pd("bidask_history.csv", index_col=0, parse_dates=True))
 
 
 def test_ohlcv_history():
@@ -75,12 +75,12 @@ def test_ohlcv_history():
 
         for exchange, data in AmberRequest(key="a").ohlcv.history(pair="eth_usd", exchange="bitfinex", start_date=pd.Timestamp("2020-01-01"), end_date=pd.Timestamp("2020-02-20"), time_interval=TimeInterval.DAYS):
             assert exchange == "bitfinex"
-            pdt.assert_frame_equal(data, read_pd("ohlcv_history.csv", index_col=0, parse_dates=True))
+            pt.assert_frame_equal(data, read_pd("ohlcv_history.csv", index_col=0, parse_dates=True))
 
 
 def test_prices_history():
     with requests_mock.Mocker() as m:
         m.get("https://web3api.io/api/v2/market/prices/eth_usd/historical", json=read_json("prices_history.json"))
         x = AmberRequest(key="a").prices.history(pair="eth_usd", start_date=pd.Timestamp("2020-02-12"), end_date=pd.Timestamp("2020-02-13"), time_interval=TimeInterval.DAYS)
-        pdt.assert_frame_equal(x, read_pd("prices_history.csv", index_col=0, parse_dates=True))
+        pt.assert_frame_equal(x, read_pd("prices_history.csv", index_col=0, parse_dates=True))
 
