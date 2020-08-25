@@ -1,9 +1,4 @@
 #!make
-SHELL := /bin/bash
-PACKAGE := pyamber
-IMAGE := tschm/amberdata
-
-# import the metadata given in __init__.py
 include pyamber/__init__.py
 PROJECT_VERSION := ${__version__}
 
@@ -21,7 +16,7 @@ help:
 
 
 build:
-	docker build --target=production --no-cache .
+	docker-compose build --no-cache web
 
 test:
 	docker-compose -f docker-compose.test.yml run sut

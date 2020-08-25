@@ -1,0 +1,5 @@
+httpretty
+pytest
+pytest-cov
+pytest-html
+requests-mock

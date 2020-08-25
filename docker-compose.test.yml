@@ -8,5 +8,12 @@ services:
 
     volumes:
       - ./pyamber:/amberdata/pyamber:ro
-      - ./test:/amberdata/test:ro
+      - ./test:/amberdata/test
       - ./artifacts:/amberdata/artifacts
+
+    command:
+        py.test --cov=pyamber
+                --cov-report html:artifacts/html-coverage
+                --cov-report term
+                --html=artifacts/html-report/report.html
+                /amberdata/test
