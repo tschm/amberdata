@@ -6,7 +6,6 @@ COPY pyamber         /amberdata/pyamber
 # install all requirements...
 RUN pip install --no-cache-dir pandas==0.25.3 requests==2.23.0 flask==1.1.1
 
-WORKDIR amberdata
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as production
 
