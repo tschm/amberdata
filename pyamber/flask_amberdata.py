@@ -1,4 +1,9 @@
-from flask import Flask, current_app
+# -*- coding: utf-8 -*-
+from __future__ import annotations
+
+from flask import current_app
+from flask import Flask
+
 from pyamber.request import AmberRequest
 
 
@@ -22,26 +27,26 @@ class Amberdata(object):
         """
         # Validate that the config is a dict
         if config is None or not isinstance(config, dict):
-            raise InvalidSettingsError('Invalid application configuration')
+            raise InvalidSettingsError("Invalid application configuration")
 
         # Otherwise, return a single connection
         return AmberRequest(key=config["AMBERDATA"]["x-api-key"])
 
     def init_app(self, app, config=None):
         if not app or not isinstance(app, Flask):
-            raise Exception('Invalid Flask application instance')
+            raise Exception("Invalid Flask application instance")
 
         self.app = app
 
-        app.extensions = getattr(app, 'extensions', {})
+        app.extensions = getattr(app, "extensions", {})
 
-        if 'amberdata' not in app.extensions:
-            app.extensions['amberdata'] = {}
+        if "amberdata" not in app.extensions:
+            app.extensions["amberdata"] = {}
 
-        if self in app.extensions['amberdata']:
+        if self in app.extensions["amberdata"]:
             # Raise an exception if extension already initialized as
             # potentially new configuration would not be loaded.
-            raise Exception('Extension already initialized')
+            raise Exception("Extension already initialized")
 
         if not config:
             # If not passed a config then we read the connection settings
@@ -53,15 +58,15 @@ class Amberdata(object):
 
         # Store objects in application instance so that multiple apps do not
         # end up accessing the same objects.
-        s = {'app': app, 'request': requests}
-        app.extensions['amberdata'][self] = s
+        s = {"app": app, "request": requests}
+        app.extensions["amberdata"][self] = s
 
     @property
     def request(self):
         """
         Return Amberdata request associated with this flask instance.
         """
-        return current_app.extensions['amberdata'][self]['request']
+        return current_app.extensions["amberdata"][self]["request"]
 
 
 amberdata = Amberdata()

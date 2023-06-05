@@ -1,8 +1,12 @@
+# -*- coding: utf-8 -*-
+from __future__ import annotations
+
 import logging
 
 import pandas as pd
 
-from pyamber.enum import TimeInterval, TimeFormat
+from pyamber.enum import TimeFormat
+from pyamber.enum import TimeInterval
 from pyamber.intervals import intervals
 from pyamber.util import frames
 
@@ -13,7 +17,15 @@ class OhlcvRequest(object):
     def __init__(self, request):
         self.__request = request
 
-    def history(self, pair, exchange, start_date=None, end_date=None, time_interval=None, logger=None):
+    def history(
+        self,
+        pair,
+        exchange,
+        start_date=None,
+        end_date=None,
+        time_interval=None,
+        logger=None,
+    ):
         start_date = start_date or pd.Timestamp("today")
         end_date = end_date or pd.Timestamp("today")
 
@@ -23,16 +35,24 @@ class OhlcvRequest(object):
         d = {e: pd.DataFrame() for e in exchange.split(",")}
         time_interval = time_interval or TimeInterval.HOURS
 
-        url = "https://web3api.io/api/v2/market/ohlcv/{pair}/historical".format(pair=pair)
+        url = "https://web3api.io/api/v2/market/ohlcv/{pair}/historical".format(
+            pair=pair
+        )
 
         # loop over the intervals
         for start, end in intervals(start_date=start_date, end_date=end_date):
             # loop over the exchanges
-            params = {"timeInterval": time_interval.value, "startDate": start.value_in_milliseconds,
-                      "endDate": end.value_in_milliseconds, "timeFormat": TimeFormat.MILLISECONDS.value,
-                      "exchange": exchange}
+            params = {
+                "timeInterval": time_interval.value,
+                "startDate": start.value_in_milliseconds,
+                "endDate": end.value_in_milliseconds,
+                "timeFormat": TimeFormat.MILLISECONDS.value,
+                "exchange": exchange,
+            }
 
-            for e, data in frames(self.__request.get(url=url, params=params, logger=logger)):
+            for e, data in frames(
+                self.__request.get(url=url, params=params, logger=logger)
+            ):
                 d[e] = pd.concat((d[e], data), axis=0)
 
         # {exchange : data...}
@@ -68,13 +88,18 @@ class PriceRequest(object):
             if data["timestamp"]:
                 yield exchange, __dict2series(data).apply(float)
 
-    def history(self, pair, start_date=None, end_date=None, time_interval=None, logger=None):
-
+    def history(
+        self, pair, start_date=None, end_date=None, time_interval=None, logger=None
+    ):
         def __dict2series(ts):
-            return pd.Series({pd.Timestamp(1e6 * int(x["timestamp"])): float(x["price"]) for x in ts})
+            return pd.Series(
+                {pd.Timestamp(1e6 * int(x["timestamp"])): float(x["price"]) for x in ts}
+            )
 
         def __payload2frame(payload):
-            return pd.DataFrame({name: __dict2series(ts) for name, ts in payload.items()})
+            return pd.DataFrame(
+                {name: __dict2series(ts) for name, ts in payload.items()}
+            )
 
         start_date = start_date or pd.Timestamp("today")
         end_date = end_date or pd.Timestamp("today")
@@ -84,13 +109,21 @@ class PriceRequest(object):
 
         time_interval = time_interval or TimeInterval.HOURS
 
-        url = "https://web3api.io/api/v2/market/prices/{pair}/historical".format(pair=pair)
+        url = "https://web3api.io/api/v2/market/prices/{pair}/historical".format(
+            pair=pair
+        )
 
         frame = pd.DataFrame(columns=[pair])
 
-        for start, end in intervals(start_date=start_date, end_date=end_date, freq=pd.Timedelta(days=1)):
-            params = {"timeInterval": time_interval.value, "startDate": start.value_in_milliseconds,
-                      "endDate": end.value_in_milliseconds, "timeFormat": TimeFormat.MILLISECONDS.value}
+        for start, end in intervals(
+            start_date=start_date, end_date=end_date, freq=pd.Timedelta(days=1)
+        ):
+            params = {
+                "timeInterval": time_interval.value,
+                "startDate": start.value_in_milliseconds,
+                "endDate": end.value_in_milliseconds,
+                "timeFormat": TimeFormat.MILLISECONDS.value,
+            }
             payload = self.__request.get(url=url, params=params, logger=logger)
             frame = pd.concat((frame, __payload2frame(payload)), axis=0)
 
@@ -108,13 +141,19 @@ class BidAskRequest(object):
         assert isinstance(start_date, pd.Timestamp)
         assert isinstance(end_date, pd.Timestamp)
 
-        url = "https://web3api.io/api/v2/market/tickers/{pair}/historical".format(pair=pair)
+        url = "https://web3api.io/api/v2/market/tickers/{pair}/historical".format(
+            pair=pair
+        )
 
         d = {e: pd.DataFrame() for e in exchange.split(",")}
 
         # loop over the intervals
         for start, end in intervals(start_date=start_date, end_date=end_date):
-            params = {"startDate": start.value_in_milliseconds, "endDate": end.value_in_milliseconds, "exchange": exchange}
+            params = {
+                "startDate": start.value_in_milliseconds,
+                "endDate": end.value_in_milliseconds,
+                "exchange": exchange,
+            }
             payload = self.__request.get(url=url, params=params, logger=logger)
 
             for e, data in frames(payload):

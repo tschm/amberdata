@@ -1,9 +1,14 @@
+# -*- coding: utf-8 -*-
+from __future__ import annotations
+
 import logging
 
 import requests
 
 from pyamber.features import Features_Request
-from pyamber.markets import OhlcvRequest, PriceRequest, BidAskRequest
+from pyamber.markets import BidAskRequest
+from pyamber.markets import OhlcvRequest
+from pyamber.markets import PriceRequest
 
 
 class AmberRequest(object):
@@ -44,4 +49,3 @@ class AmberRequest(object):
     @property
     def health(self):
         return requests.get(url="https://web3api.io/health")
-

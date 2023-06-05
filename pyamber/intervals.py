@@ -1,7 +1,14 @@
+# -*- coding: utf-8 -*-
+from __future__ import annotations
+
 import pandas as pd
 
 
-def intervals(start_date: pd.Timestamp, end_date: pd.Timestamp, freq: pd.Timedelta = pd.Timedelta(days=20)):
+def intervals(
+    start_date: pd.Timestamp,
+    end_date: pd.Timestamp,
+    freq: pd.Timedelta = pd.Timedelta(days=20),
+):
     """
     Constructs an iterator (start_date, t2), (t2, t3), ..., (t_{n-1}, end_date). This is used to address the pagination
     of amberdata.
