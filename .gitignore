@@ -20,3 +20,6 @@ index
 *.egg-info
 dist
 config/settings.cfg
+
+.coverage
+__pycache__
