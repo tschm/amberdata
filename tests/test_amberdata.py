@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import annotations
 
-from test.settings import read_json
-from test.settings import read_pd
+import json
 
 import pandas as pd
 import pandas.testing as pt
@@ -12,6 +11,11 @@ from requests import HTTPError
 
 from pyamber.enum import TimeInterval
 from pyamber.request import AmberRequest
+
+
+def read_json(name):
+    with open(name) as f:
+        return json.load(f)
 
 
 def test_health():
@@ -24,39 +28,44 @@ def test_history():
         AmberRequest(key="a").prices.history(pair="eth_usd")
 
 
-def test_prices_latest():
+def test_prices_latest(resource_dir):
     with requests_mock.Mocker() as m:
         m.get(
             "https://web3api.io/api/v2/market/prices/eth_usd/latest",
-            json=read_json("prices_latest.json"),
+            json=read_json(resource_dir / "prices_latest.json"),
         )
         for pair, series in AmberRequest(key="a").prices.latest(pair="eth_usd"):
             assert pair == "eth_usd"
+
+            x = pd.read_csv(
+                resource_dir / "prices_latest.csv",
+                index_col=0,
+                parse_dates=True,
+                header=None,
+            )[1]
+            print(x)
+
             pt.assert_series_equal(
                 series,
-                read_pd(
-                    "prices_latest.csv",
-                    squeeze=True,
-                    index_col=0,
-                    parse_dates=True,
-                    header=None,
-                ),
+                x,
                 check_names=False,
             )
 
 
-def test_ohlcv_latest():
+def test_ohlcv_latest(resource_dir):
     with requests_mock.Mocker() as m:
         m.get(
             "https://web3api.io/api/v2/market/ohlcv/eth_usd/latest",
-            json=read_json("ohlcv_latest.json"),
+            json=read_json(resource_dir / "ohlcv_latest.json"),
         )
         for exchange, series in AmberRequest(key="a").ohlcv.latest(
             pair="eth_usd", exchange="bitfinex"
         ):
             assert exchange == "bitfinex"
 
-            x = read_pd("ohlcv_latest.csv", squeeze=True, index_col=0, header=None)
+            x = pd.read_csv(
+                resource_dir / "ohlcv_latest.csv", index_col=0, header=None
+            ).squeeze()
             x["timestamp"] = pd.Timestamp(x["timestamp"])
 
             for key in {"open", "high", "low", "close", "volume"}:
@@ -65,18 +74,20 @@ def test_ohlcv_latest():
             pt.assert_series_equal(series, x, check_names=False)
 
 
-def test_bid_ask_latest():
+def test_bid_ask_latest(resource_dir):
     with requests_mock.Mocker() as m:
         m.get(
             "https://web3api.io/api/v2/market/tickers/eth_usd/latest",
-            json=read_json("bidask_latest.json"),
+            json=read_json(resource_dir / "bidask_latest.json"),
         )
         for exchange, series in AmberRequest(key="a").bid_ask.latest(
             pair="eth_usd", exchange="bitfinex"
         ):
             assert exchange == "bitfinex"
 
-            x = read_pd("bidask_latest.csv", squeeze=True, index_col=0, header=None)
+            x = pd.read_csv(
+                resource_dir / "bidask_latest.csv", index_col=0, header=None
+            ).squeeze()
             x["timestamp"] = pd.Timestamp(x["timestamp"])
 
             for key in {"bid", "ask", "mid", "last"}:
@@ -85,11 +96,11 @@ def test_bid_ask_latest():
             pt.assert_series_equal(series, x, check_names=False)
 
 
-def test_bidask_history():
+def test_bidask_history(resource_dir):
     with requests_mock.Mocker() as m:
         m.get(
             "https://web3api.io/api/v2/market/tickers/eth_usd/historical",
-            json=read_json("bidask_history.json"),
+            json=read_json(resource_dir / "bidask_history.json"),
         )
         for exchange, data in AmberRequest(key="a").bid_ask.history(
             pair="eth_usd",
@@ -99,23 +110,26 @@ def test_bidask_history():
         ):
             assert exchange == "bitfinex"
             pt.assert_frame_equal(
-                data, read_pd("bidask_history.csv", index_col=0, parse_dates=True)
+                data,
+                pd.read_csv(
+                    resource_dir / "bidask_history.csv", index_col=0, parse_dates=True
+                ),
             )
 
 
-def test_ohlcv_history():
+def test_ohlcv_history(resource_dir):
     with requests_mock.Mocker() as m:
         m.get(
             "https://web3api.io/api/v2/market/ohlcv/eth_usd/historical?timeInterval=days&startDate=1577836800000",
-            json=read_json("ohlcv_history1.json"),
+            json=read_json(resource_dir / "ohlcv_history1.json"),
         )
         m.get(
             "https://web3api.io/api/v2/market/ohlcv/eth_usd/historical?timeInterval=days&startDate=1579564800000",
-            json=read_json("ohlcv_history2.json"),
+            json=read_json(resource_dir / "ohlcv_history2.json"),
         )
         m.get(
             "https://web3api.io/api/v2/market/ohlcv/eth_usd/historical?timeInterval=days&startDate=1581292800000",
-            json=read_json("ohlcv_history3.json"),
+            json=read_json(resource_dir / "ohlcv_history3.json"),
         )
 
         for exchange, data in AmberRequest(key="a").ohlcv.history(
@@ -127,15 +141,18 @@ def test_ohlcv_history():
         ):
             assert exchange == "bitfinex"
             pt.assert_frame_equal(
-                data, read_pd("ohlcv_history.csv", index_col=0, parse_dates=True)
+                data,
+                pd.read_csv(
+                    resource_dir / "ohlcv_history.csv", index_col=0, parse_dates=True
+                ),
             )
 
 
-def test_prices_history():
+def test_prices_history(resource_dir):
     with requests_mock.Mocker() as m:
         m.get(
             "https://web3api.io/api/v2/market/prices/eth_usd/historical",
-            json=read_json("prices_history.json"),
+            json=read_json(resource_dir / "prices_history.json"),
         )
         x = AmberRequest(key="a").prices.history(
             pair="eth_usd",
@@ -144,5 +161,8 @@ def test_prices_history():
             time_interval=TimeInterval.DAYS,
         )
         pt.assert_frame_equal(
-            x, read_pd("prices_history.csv", index_col=0, parse_dates=True)
+            x,
+            pd.read_csv(
+                resource_dir / "prices_history.csv", index_col=0, parse_dates=True
+            ),
         )
