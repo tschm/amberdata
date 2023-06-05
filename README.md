@@ -50,7 +50,3 @@ if __name__ == '__main__':
         x = amberdata.request.prices.history("eth_usd", time_interval=TimeInterval.DAYS, start_date=pd.Timestamp("2020-01-12"), end_date=pd.Timestamp("2020-01-16"))
         print(x)
 ```
-
-
-
-

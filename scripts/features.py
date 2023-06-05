@@ -1,16 +1,19 @@
+# -*- coding: utf-8 -*-
+from __future__ import annotations
+
 import pandas as pd
 from flask import Flask
 
 from pyamber.flask_amberdata import amberdata
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = Flask(__name__)
-    app.config.from_pyfile('/amberdata/config/settings.cfg')
+    app.config.from_pyfile("/amberdata/config/settings.cfg")
     amberdata.init_app(app)
 
     with app.app_context():
-        #for exchange, pair, dates in amberdata.request.features.ohlcv_pairs():
+        # for exchange, pair, dates in amberdata.request.features.ohlcv_pairs():
         #    print(exchange, pair, dates)
 
         for feature in amberdata.request.features.pairs():
@@ -24,6 +27,3 @@ if __name__ == '__main__':
 
         for feature in amberdata.request.features.trades(exchange="bitfinex"):
             print(feature)
-
-
-

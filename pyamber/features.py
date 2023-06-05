@@ -1,6 +1,9 @@
+# -*- coding: utf-8 -*-
+from __future__ import annotations
+
 from collections import namedtuple
 
-Feature = namedtuple('Feature', 'exchange pair data')
+Feature = namedtuple("Feature", "exchange pair data")
 
 
 class Features_Request(object):

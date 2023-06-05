@@ -21,3 +21,5 @@ index
 dist
 config/settings.cfg
 
+.coverage
+__pycache__
