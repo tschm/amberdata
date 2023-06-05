@@ -36,6 +36,6 @@ jobs:
           os: ${{ runner.os }}
           python-version: "3.11"
           sphinx-folder: "book/sphinx/"
-          source-folder: "pyaddepar"
-          kernel: "pyaddepar"
+          source-folder: "pyamber"
+          kernel: "pyamber"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
