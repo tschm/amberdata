@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import annotations
 
 from collections import namedtuple
@@ -6,7 +5,7 @@ from collections import namedtuple
 Feature = namedtuple("Feature", "exchange pair data")
 
 
-class Features_Request(object):
+class Features_Request:
     def __init__(self, request):
         self.__request = request
 
@@ -18,8 +17,7 @@ class Features_Request(object):
         url = "https://web3api.io/api/v2/market/prices/pairs"
 
         payload = self.__request.get(url=url, logger=logger)
-        for pair in payload:
-            yield pair
+        yield from payload
 
     def ohlcv_pairs(self, exchange=None, logger=None):
         # ohlcv data at a given exchange

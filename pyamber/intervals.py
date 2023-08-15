@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import annotations
 
 import pandas as pd
@@ -30,5 +29,4 @@ def intervals(
         # stamps is now
         # t1 = start_date, t2, t3, ..., t_{n-1}, t_n = end_date
 
-        for start, end in zip(stamps[:-1], stamps[1:]):
-            yield start, end
+        yield from zip(stamps[:-1], stamps[1:])

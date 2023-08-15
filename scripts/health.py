@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
 from __future__ import annotations
 
 from pyamber.enum import TimeInterval
 from pyamber.request import AmberRequest
-
 
 if __name__ == "__main__":
     request = AmberRequest(key="...")

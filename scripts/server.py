@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import annotations
 
 import pandas as pd
@@ -6,7 +5,6 @@ from flask import Flask
 
 from pyamber.enum import TimeInterval
 from pyamber.flask_amberdata import amberdata
-
 
 if __name__ == "__main__":
     app = Flask(__name__)

@@ -1,12 +1,8 @@
-# -*- coding: utf-8 -*-
 from __future__ import annotations
 
 import pytest
-from flask import Flask
 
-from pyamber.flask_amberdata import Amberdata
-from pyamber.flask_amberdata import amberdata
-from pyamber.flask_amberdata import InvalidSettingsError
+from pyamber.flask_amberdata import Amberdata, InvalidSettingsError, amberdata
 
 
 def test_app_false(app):

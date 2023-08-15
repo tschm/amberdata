@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import annotations
 
 import json
@@ -48,7 +47,7 @@ def test_ohlcv_pairs(resource_dir):
             "https://web3api.io/api/v2/market/ohlcv/information",
             json=read_json(resource_dir / "ohlcv_pairs.json"),
         )
-        xxx = set([f.exchange for f in AmberRequest(key="a").features.ohlcv_pairs()])
+        xxx = {f.exchange for f in AmberRequest(key="a").features.ohlcv_pairs()}
         assert xxx == {"binance"}
 
 
@@ -58,7 +57,7 @@ def test_price_pairs(resource_dir):
             "https://web3api.io/api/v2/market/prices/pairs",
             json=read_json(resource_dir / "price_pairs.json"),
         )
-        xxx = set([f for f in AmberRequest(key="a").features.price_pairs()])
+        xxx = {f for f in AmberRequest(key="a").features.price_pairs()}
         assert xxx == {"18c_btc", "18c_eth", "1st_btc"}
 
 

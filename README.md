@@ -1,19 +1,25 @@
 # pyamber
+
 [![Action Status](https://github.com/tschm/amberdata/workflows/CI/badge.svg)](https://github.com/tschm/amberdata/actions/)
 
-Some utility code for interacting with amberdata. For more information on amberdata please check out
-https://amberdata.io/.
+Some utility code for interacting with amberdata.
+For more information on amberdata please check out
+<https://amberdata.io/>.
 
 ## Installing pyamber
+
 Install with pip
-```
+
+```bash
 pip install pyamber
 ```
 
 ## AmberRequest
-AmberRequest is a class hiding the management of your key, the pagination of requests and conversion of your results to standard pandas containers.
 
-```
+AmberRequest is a class hiding the management of your key, the pagination of
+requests and conversion of your results to standard pandas containers.
+
+```python
 from pyamber.request import AmberRequest, TimeInterval
 
 if __name__ == '__main__':
@@ -24,16 +30,21 @@ if __name__ == '__main__':
 ```
 
 ## Settings.cfg
+
 We recommend to define a configuration file `(*.cfg)` containing
-```
+
+```python
 AMBERDATA = {'x-api-key': 'ENTER YOUR KEY HERE'}
 ```
 
 ## Flask-AmberData
-A Flask extension that provides integration with AmberData. In particular this flask extension provides
-management of the your AmberRequests. You can use configuration files such as settings.cfg to follow standard flask practices.
-The configuration is easy, just fetch the extension:
-```
+
+A Flask extension that provides integration with AmberData. In particular this
+flask extension provides management of your AmberRequests.
+You can use configuration files such as settings.cfg to follow standard
+flask practices. The configuration is easy, just fetch the extension:
+
+```python
 import pandas as pd
 from flask import Flask
 
@@ -47,6 +58,9 @@ if __name__ == '__main__':
 
     with app.app_context():
         assert amberdata.request.health
-        x = amberdata.request.prices.history("eth_usd", time_interval=TimeInterval.DAYS, start_date=pd.Timestamp("2020-01-12"), end_date=pd.Timestamp("2020-01-16"))
+        x = amberdata.request.prices.history("eth_usd",
+                                             time_interval=TimeInterval.DAYS,
+                                             start_date=pd.Timestamp("2020-01-12"),
+                                             end_date=pd.Timestamp("2020-01-16"))
         print(x)
 ```

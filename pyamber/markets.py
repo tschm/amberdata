@@ -1,19 +1,15 @@
-# -*- coding: utf-8 -*-
 from __future__ import annotations
-
-import logging
 
 import pandas as pd
 
-from pyamber.enum import TimeFormat
-from pyamber.enum import TimeInterval
+from pyamber.enum import TimeFormat, TimeInterval
 from pyamber.intervals import intervals
 from pyamber.util import frames
 
 pd.Timestamp.value_in_milliseconds = property(lambda self: int(self.value * 1e-6))
 
 
-class OhlcvRequest(object):
+class OhlcvRequest:
     def __init__(self, request):
         self.__request = request
 
@@ -72,7 +68,7 @@ class OhlcvRequest(object):
                 yield exchange, pd.Series(data)
 
 
-class PriceRequest(object):
+class PriceRequest:
     def __init__(self, request):
         self.__request = request
 
@@ -130,7 +126,7 @@ class PriceRequest(object):
         return frame.sort_index(ascending=False)
 
 
-class BidAskRequest(object):
+class BidAskRequest:
     def __init__(self, request):
         self.__request = request
 

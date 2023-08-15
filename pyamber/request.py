@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import annotations
 
 import logging
@@ -6,12 +5,10 @@ import logging
 import requests
 
 from pyamber.features import Features_Request
-from pyamber.markets import BidAskRequest
-from pyamber.markets import OhlcvRequest
-from pyamber.markets import PriceRequest
+from pyamber.markets import BidAskRequest, OhlcvRequest, PriceRequest
 
 
-class AmberRequest(object):
+class AmberRequest:
     def __init__(self, key):
         self.__key = key
 

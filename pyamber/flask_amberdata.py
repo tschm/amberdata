@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
 from __future__ import annotations
 
-from flask import current_app
-from flask import Flask
+from flask import Flask, current_app
 
 from pyamber.request import AmberRequest
 
@@ -11,7 +9,7 @@ class InvalidSettingsError(Exception):
     pass
 
 
-class Amberdata(object):
+class Amberdata:
     """Main class used for initialization of Flask-Amberdata."""
 
     def __init__(self, app=None, config=None):
