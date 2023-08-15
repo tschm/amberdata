@@ -1,9 +1,7 @@
 name: "book"
 
 on:
-  push:
-    branches:
-      - main
+  push
 
 jobs:
   sphinx:
