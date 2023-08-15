@@ -1,7 +1,5 @@
 # pyamber
 
-[![Action Status](https://github.com/tschm/amberdata/workflows/CI/badge.svg)](https://github.com/tschm/amberdata/actions/)
-
 Some utility code for interacting with amberdata.
 For more information on amberdata please check out
 <https://amberdata.io/>.
