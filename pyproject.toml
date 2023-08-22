@@ -16,7 +16,6 @@ flask = "*"
 pytest = "*"
 pytest-cov = "*"
 httpretty = "*"
-pytest-html = "*"
 requests-mock = "*"
 
 [build-system]
