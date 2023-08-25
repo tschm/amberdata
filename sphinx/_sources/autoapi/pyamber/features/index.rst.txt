@@ -1,0 +1,54 @@
+:py:mod:`pyamber.features`
+==========================
+
+.. py:module:: pyamber.features
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   pyamber.features.Features_Request
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   pyamber.features.Feature
+
+
+.. py:data:: Feature
+   
+
+   
+
+.. py:class:: Features_Request(request)
+
+   .. py:method:: exchanges(self, exchanges=None, pair=None, logger=None)
+      :abstractmethod:
+
+
+   .. py:method:: price_pairs(self, logger=None)
+
+
+   .. py:method:: ohlcv_pairs(self, exchange=None, logger=None)
+
+
+   .. py:method:: ticker_pairs(self, exchange=None, logger=None)
+
+
+   .. py:method:: pairs(self, exchange=None, pair=None, logger=None)
+
+
+   .. py:method:: trades(self, exchange=None, logger=None)
+
+
+

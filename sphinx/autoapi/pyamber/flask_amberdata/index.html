@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyamber.flask_amberdata &mdash; amberdata Documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="pyamber.intervals" href="../intervals/index.html" />
+    <link rel="prev" title="pyamber.features" href="../features/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> amberdata
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyamber</span></code></a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../enum/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyamber.enum</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../features/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyamber.features</span></code></a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyamber.flask_amberdata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../intervals/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyamber.intervals</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../markets/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyamber.markets</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../request/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyamber.request</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../util/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyamber.util</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">amberdata</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">API Reference</a> &raquo;</li>
+          <li><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyamber</span></code></a> &raquo;</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyamber.flask_amberdata</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/autoapi/pyamber/flask_amberdata/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-pyamber.flask_amberdata">
+<span id="pyamber-flask-amberdata"></span><h1><a class="reference internal" href="#module-pyamber.flask_amberdata" title="pyamber.flask_amberdata"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyamber.flask_amberdata</span></code></a><a class="headerlink" href="#module-pyamber.flask_amberdata" title="Permalink to this heading"></a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyamber.flask_amberdata.Amberdata" title="pyamber.flask_amberdata.Amberdata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Amberdata</span></code></a></p></td>
+<td><p>Main class used for initialization of Flask-Amberdata.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyamber.flask_amberdata.amberdata" title="pyamber.flask_amberdata.amberdata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">amberdata</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyamber.flask_amberdata.InvalidSettingsError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyamber.flask_amberdata.</span></span><span class="sig-name descname"><span class="pre">InvalidSettingsError</span></span><a class="reference internal" href="../../../_modules/pyamber/flask_amberdata.html#InvalidSettingsError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyamber.flask_amberdata.InvalidSettingsError" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Common base class for all non-exit exceptions.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyamber.flask_amberdata.Amberdata">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyamber.flask_amberdata.</span></span><span class="sig-name descname"><span class="pre">Amberdata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyamber/flask_amberdata.html#Amberdata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyamber.flask_amberdata.Amberdata" title="Permalink to this definition"></a></dt>
+<dd><p>Main class used for initialization of Flask-Amberdata.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyamber.flask_amberdata.Amberdata.__create_request">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__create_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyamber/flask_amberdata.html#Amberdata.__create_request"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyamber.flask_amberdata.Amberdata.__create_request" title="Permalink to this definition"></a></dt>
+<dd><p>Given Flask application’s config dict, extract relevant config vars
+out of it and establish Amberdata’s requests based on them.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyamber.flask_amberdata.Amberdata.init_app">
+<span class="sig-name descname"><span class="pre">init_app</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyamber/flask_amberdata.html#Amberdata.init_app"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyamber.flask_amberdata.Amberdata.init_app" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyamber.flask_amberdata.Amberdata.request">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyamber/flask_amberdata.html#Amberdata.request"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyamber.flask_amberdata.Amberdata.request" title="Permalink to this definition"></a></dt>
+<dd><p>Return Amberdata request associated with this flask instance.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="pyamber.flask_amberdata.amberdata">
+<span class="sig-prename descclassname"><span class="pre">pyamber.flask_amberdata.</span></span><span class="sig-name descname"><span class="pre">amberdata</span></span><a class="reference internal" href="../../../_modules/pyamber/flask_amberdata.html#amberdata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyamber.flask_amberdata.amberdata" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../features/index.html" class="btn btn-neutral float-left" title="pyamber.features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../intervals/index.html" class="btn btn-neutral float-right" title="pyamber.intervals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

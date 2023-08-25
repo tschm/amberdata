@@ -1,0 +1,49 @@
+:py:mod:`pyamber.request`
+=========================
+
+.. py:module:: pyamber.request
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   pyamber.request.AmberRequest
+
+
+
+
+.. py:class:: AmberRequest(key)
+
+   .. py:method:: prices(self)
+      :property:
+
+
+   .. py:method:: ohlcv(self)
+      :property:
+
+
+   .. py:method:: bid_ask(self)
+      :property:
+
+
+   .. py:method:: headers(self)
+      :property:
+
+
+   .. py:method:: features(self)
+      :property:
+
+
+   .. py:method:: get(self, url, params=None, logger=None)
+
+
+   .. py:method:: health(self)
+      :property:
+
+
+

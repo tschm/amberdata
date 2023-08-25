@@ -1,0 +1,49 @@
+:py:mod:`pyamber`
+=================
+
+.. py:module:: pyamber
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   enum/index.rst
+   features/index.rst
+   flask_amberdata/index.rst
+   intervals/index.rst
+   markets/index.rst
+   request/index.rst
+   util/index.rst
+
+
+Package Contents
+----------------
+
+.. py:data:: __title__
+   :annotation: = pyamber
+
+   
+
+.. py:data:: __version__
+   :annotation: = 0.1.1
+
+   
+
+.. py:data:: __author__
+   :annotation: = Thomas Schmelzer
+
+   
+
+.. py:data:: __license__
+   :annotation: = MIT
+
+   
+
+.. py:data:: __copyright__
+   :annotation: = Copyright 2020 by Thomas Schmelzer
+
+   
+
