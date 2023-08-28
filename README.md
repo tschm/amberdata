@@ -1,5 +1,7 @@
 # pyamber
 
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/tschm/amberdata/main.svg)](https://results.pre-commit.ci/latest/github/tschm/amberdata/main)
+
 Some utility code for interacting with amberdata.
 For more information on amberdata please check out
 <https://amberdata.io/>.
