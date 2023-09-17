@@ -4,6 +4,7 @@ version = "0.0.0"
 description = "Interact with Amber"
 authors = ["Thomas Schmelzer"]
 readme = "README.md"
+repository = "https://github.com/tschm/amberdata"
 packages = [{include = "pyamber"}]
 
 [tool.poetry.dependencies]
