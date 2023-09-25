@@ -9,7 +9,7 @@ flask 2.3.3 A simple framework for building complex web applications.
 │   └── markupsafe >=2.0 
 └── werkzeug >=2.3.7
     └── markupsafe >=2.1.1 
-pandas 2.1.0 Powerful data structures for data analysis, time series, and statistics
+pandas 2.1.1 Powerful data structures for data analysis, time series, and statistics
 ├── numpy >=1.22.4
 ├── numpy >=1.23.2
 ├── python-dateutil >=2.8.2
