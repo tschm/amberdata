@@ -19,31 +19,26 @@ Classes
 
 .. py:class:: AmberRequest(key)
 
-   .. py:method:: prices(self)
-      :property:
+
+   .. py:property:: prices
 
 
-   .. py:method:: ohlcv(self)
-      :property:
+   .. py:property:: ohlcv
 
 
-   .. py:method:: bid_ask(self)
-      :property:
+   .. py:property:: bid_ask
 
 
-   .. py:method:: headers(self)
-      :property:
+   .. py:property:: headers
 
 
-   .. py:method:: features(self)
-      :property:
+   .. py:property:: features
 
 
-   .. py:method:: get(self, url, params=None, logger=None)
+   .. py:property:: health
 
 
-   .. py:method:: health(self)
-      :property:
+   .. py:method:: get(url, params=None, logger=None)
 
 
 

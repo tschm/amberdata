@@ -27,6 +27,7 @@ Attributes
 
 .. py:exception:: InvalidSettingsError
 
+
    Bases: :py:obj:`Exception`
 
    Common base class for all non-exit exceptions.
@@ -34,7 +35,12 @@ Attributes
 
 .. py:class:: Amberdata(app=None, config=None)
 
+
    Main class used for initialization of Flask-Amberdata.
+
+   .. py:property:: request
+
+      Return Amberdata request associated with this flask instance.
 
    .. py:method:: __create_request(config)
       :staticmethod:
@@ -43,18 +49,11 @@ Attributes
       out of it and establish Amberdata's requests based on them.
 
 
-   .. py:method:: init_app(self, app, config=None)
-
-
-   .. py:method:: request(self)
-      :property:
-
-      Return Amberdata request associated with this flask instance.
+   .. py:method:: init_app(app, config=None)
 
 
 
 .. py:data:: amberdata
-   
 
    
 

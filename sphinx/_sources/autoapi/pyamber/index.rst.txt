@@ -23,27 +23,27 @@ Package Contents
 ----------------
 
 .. py:data:: __title__
-   :annotation: = pyamber
+   :value: 'pyamber'
 
    
 
 .. py:data:: __version__
-   :annotation: = 0.1.1
+   :value: '0.1.1'
 
    
 
 .. py:data:: __author__
-   :annotation: = Thomas Schmelzer
+   :value: 'Thomas Schmelzer'
 
    
 
 .. py:data:: __license__
-   :annotation: = MIT
+   :value: 'MIT'
 
    
 
 .. py:data:: __copyright__
-   :annotation: = Copyright 2020 by Thomas Schmelzer
+   :value: 'Copyright 2020 by Thomas Schmelzer'
 
    
 

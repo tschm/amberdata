@@ -19,43 +19,33 @@ Classes
 
 
 
-Attributes
-~~~~~~~~~~
-
-.. autoapisummary::
-
-   pyamber.markets.value_in_milliseconds
-
-
-.. py:data:: value_in_milliseconds
-   
-
-   
-
 .. py:class:: OhlcvRequest(request)
 
-   .. py:method:: history(self, pair, exchange, start_date=None, end_date=None, time_interval=None, logger=None)
+
+   .. py:method:: history(pair, exchange, start_date=None, end_date=None, time_interval=None, logger=None)
 
 
-   .. py:method:: latest(self, pair, exchange, logger=None)
+   .. py:method:: latest(pair, exchange, logger=None)
 
 
 
 .. py:class:: PriceRequest(request)
 
-   .. py:method:: latest(self, pair, logger=None)
+
+   .. py:method:: latest(pair, logger=None)
 
 
-   .. py:method:: history(self, pair, start_date=None, end_date=None, time_interval=None, logger=None)
+   .. py:method:: history(pair, start_date=None, end_date=None, time_interval=None, logger=None)
 
 
 
 .. py:class:: BidAskRequest(request)
 
-   .. py:method:: history(self, pair, exchange, start_date=None, end_date=None, logger=None)
+
+   .. py:method:: history(pair, exchange, start_date=None, end_date=None, logger=None)
 
 
-   .. py:method:: latest(self, pair, exchange, logger=None)
+   .. py:method:: latest(pair, exchange, logger=None)
 
 
 

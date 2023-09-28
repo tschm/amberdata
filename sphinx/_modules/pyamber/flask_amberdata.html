@@ -12,11 +12,11 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -27,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> amberdata
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            amberdata
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -57,10 +61,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-          <li><a href="../pyamber.html">pyamber</a> &raquo;</li>
-      <li>pyamber.flask_amberdata</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../pyamber.html">pyamber</a></li>
+      <li class="breadcrumb-item active">pyamber.flask_amberdata</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -77,11 +81,16 @@
 <span class="kn">from</span> <span class="nn">pyamber.request</span> <span class="kn">import</span> <span class="n">AmberRequest</span>
 
 
-<div class="viewcode-block" id="InvalidSettingsError"><a class="viewcode-back" href="../../autoapi/pyamber/flask_amberdata/index.html#pyamber.flask_amberdata.InvalidSettingsError">[docs]</a><span class="k">class</span> <span class="nc">InvalidSettingsError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<div class="viewcode-block" id="InvalidSettingsError">
+<a class="viewcode-back" href="../../autoapi/pyamber/flask_amberdata/index.html#pyamber.flask_amberdata.InvalidSettingsError">[docs]</a>
+<span class="k">class</span> <span class="nc">InvalidSettingsError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="k">pass</span></div>
 
 
-<div class="viewcode-block" id="Amberdata"><a class="viewcode-back" href="../../autoapi/pyamber/flask_amberdata/index.html#pyamber.flask_amberdata.Amberdata">[docs]</a><span class="k">class</span> <span class="nc">Amberdata</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Amberdata">
+<a class="viewcode-back" href="../../autoapi/pyamber/flask_amberdata/index.html#pyamber.flask_amberdata.Amberdata">[docs]</a>
+<span class="k">class</span> <span class="nc">Amberdata</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Main class used for initialization of Flask-Amberdata.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -90,7 +99,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="Amberdata.__create_request"><a class="viewcode-back" href="../../autoapi/pyamber/flask_amberdata/index.html#pyamber.flask_amberdata.Amberdata.__create_request">[docs]</a>    <span class="k">def</span> <span class="nf">__create_request</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+<div class="viewcode-block" id="Amberdata.__create_request">
+<a class="viewcode-back" href="../../autoapi/pyamber/flask_amberdata/index.html#pyamber.flask_amberdata.Amberdata.__create_request">[docs]</a>
+    <span class="k">def</span> <span class="nf">__create_request</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Given Flask application&#39;s config dict, extract relevant config vars</span>
 <span class="sd">        out of it and establish Amberdata&#39;s requests based on them.</span>
@@ -102,7 +113,10 @@
         <span class="c1"># Otherwise, return a single connection</span>
         <span class="k">return</span> <span class="n">AmberRequest</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;AMBERDATA&quot;</span><span class="p">][</span><span class="s2">&quot;x-api-key&quot;</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="Amberdata.init_app"><a class="viewcode-back" href="../../autoapi/pyamber/flask_amberdata/index.html#pyamber.flask_amberdata.Amberdata.init_app">[docs]</a>    <span class="k">def</span> <span class="nf">init_app</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Amberdata.init_app">
+<a class="viewcode-back" href="../../autoapi/pyamber/flask_amberdata/index.html#pyamber.flask_amberdata.Amberdata.init_app">[docs]</a>
+    <span class="k">def</span> <span class="nf">init_app</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">app</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">Flask</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Invalid Flask application instance&quot;</span><span class="p">)</span>
 
@@ -131,15 +145,23 @@
         <span class="n">s</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;app&quot;</span><span class="p">:</span> <span class="n">app</span><span class="p">,</span> <span class="s2">&quot;request&quot;</span><span class="p">:</span> <span class="n">requests</span><span class="p">}</span>
         <span class="n">app</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="s2">&quot;amberdata&quot;</span><span class="p">][</span><span class="bp">self</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span></div>
 
+
     <span class="nd">@property</span>
-<div class="viewcode-block" id="Amberdata.request"><a class="viewcode-back" href="../../autoapi/pyamber/flask_amberdata/index.html#pyamber.flask_amberdata.Amberdata.request">[docs]</a>    <span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Amberdata.request">
+<a class="viewcode-back" href="../../autoapi/pyamber/flask_amberdata/index.html#pyamber.flask_amberdata.Amberdata.request">[docs]</a>
+    <span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return Amberdata request associated with this flask instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">current_app</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="s2">&quot;amberdata&quot;</span><span class="p">][</span><span class="bp">self</span><span class="p">][</span><span class="s2">&quot;request&quot;</span><span class="p">]</span></div></div>
+        <span class="k">return</span> <span class="n">current_app</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="s2">&quot;amberdata&quot;</span><span class="p">][</span><span class="bp">self</span><span class="p">][</span><span class="s2">&quot;request&quot;</span><span class="p">]</span></div>
+</div>
 
 
-<div class="viewcode-block" id="amberdata"><a class="viewcode-back" href="../../autoapi/pyamber/flask_amberdata/index.html#pyamber.flask_amberdata.amberdata">[docs]</a><span class="n">amberdata</span> <span class="o">=</span> <span class="n">Amberdata</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="amberdata">
+<a class="viewcode-back" href="../../autoapi/pyamber/flask_amberdata/index.html#pyamber.flask_amberdata.amberdata">[docs]</a>
+<span class="n">amberdata</span> <span class="o">=</span> <span class="n">Amberdata</span><span class="p">()</span></div>
+
 </pre></div>
 
            </div>

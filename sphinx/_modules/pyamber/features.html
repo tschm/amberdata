@@ -12,11 +12,11 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -27,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> amberdata
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            amberdata
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -57,10 +61,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-          <li><a href="../pyamber.html">pyamber</a> &raquo;</li>
-      <li>pyamber.features</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../pyamber.html">pyamber</a></li>
+      <li class="breadcrumb-item active">pyamber.features</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -74,24 +78,37 @@
 
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
 
-<div class="viewcode-block" id="Feature"><a class="viewcode-back" href="../../autoapi/pyamber/features/index.html#pyamber.features.Feature">[docs]</a><span class="n">Feature</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;exchange pair data&quot;</span><span class="p">)</span></div>
+<div class="viewcode-block" id="Feature">
+<a class="viewcode-back" href="../../autoapi/pyamber/features/index.html#pyamber.features.Feature">[docs]</a>
+<span class="n">Feature</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;exchange pair data&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="Features_Request"><a class="viewcode-back" href="../../autoapi/pyamber/features/index.html#pyamber.features.Features_Request">[docs]</a><span class="k">class</span> <span class="nc">Features_Request</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Features_Request">
+<a class="viewcode-back" href="../../autoapi/pyamber/features/index.html#pyamber.features.Features_Request">[docs]</a>
+<span class="k">class</span> <span class="nc">Features_Request</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__request</span> <span class="o">=</span> <span class="n">request</span>
 
-<div class="viewcode-block" id="Features_Request.exchanges"><a class="viewcode-back" href="../../autoapi/pyamber/features/index.html#pyamber.features.Features_Request.exchanges">[docs]</a>    <span class="k">def</span> <span class="nf">exchanges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchanges</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Features_Request.exchanges">
+<a class="viewcode-back" href="../../autoapi/pyamber/features/index.html#pyamber.features.Features_Request.exchanges">[docs]</a>
+    <span class="k">def</span> <span class="nf">exchanges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchanges</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Please use the function &#39;pairs&#39;&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Features_Request.price_pairs"><a class="viewcode-back" href="../../autoapi/pyamber/features/index.html#pyamber.features.Features_Request.price_pairs">[docs]</a>    <span class="k">def</span> <span class="nf">price_pairs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Features_Request.price_pairs">
+<a class="viewcode-back" href="../../autoapi/pyamber/features/index.html#pyamber.features.Features_Request.price_pairs">[docs]</a>
+    <span class="k">def</span> <span class="nf">price_pairs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># all price pairs on all exchanges</span>
         <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://web3api.io/api/v2/market/prices/pairs&quot;</span>
 
         <span class="n">payload</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__request</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
         <span class="k">yield from</span> <span class="n">payload</span></div>
 
-<div class="viewcode-block" id="Features_Request.ohlcv_pairs"><a class="viewcode-back" href="../../autoapi/pyamber/features/index.html#pyamber.features.Features_Request.ohlcv_pairs">[docs]</a>    <span class="k">def</span> <span class="nf">ohlcv_pairs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Features_Request.ohlcv_pairs">
+<a class="viewcode-back" href="../../autoapi/pyamber/features/index.html#pyamber.features.Features_Request.ohlcv_pairs">[docs]</a>
+    <span class="k">def</span> <span class="nf">ohlcv_pairs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># ohlcv data at a given exchange</span>
         <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://web3api.io/api/v2/market/ohlcv/information&quot;</span>
 
@@ -104,7 +121,10 @@
             <span class="k">for</span> <span class="n">pair</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                 <span class="k">yield</span> <span class="n">Feature</span><span class="p">(</span><span class="n">exchange</span><span class="o">=</span><span class="n">exchange</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="n">pair</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Features_Request.ticker_pairs"><a class="viewcode-back" href="../../autoapi/pyamber/features/index.html#pyamber.features.Features_Request.ticker_pairs">[docs]</a>    <span class="k">def</span> <span class="nf">ticker_pairs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Features_Request.ticker_pairs">
+<a class="viewcode-back" href="../../autoapi/pyamber/features/index.html#pyamber.features.Features_Request.ticker_pairs">[docs]</a>
+    <span class="k">def</span> <span class="nf">ticker_pairs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://web3api.io/api/v2/market/tickers/information&quot;</span>
         <span class="n">exchange</span> <span class="o">=</span> <span class="n">exchange</span> <span class="ow">or</span> <span class="p">[]</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;exchange&quot;</span><span class="p">:</span> <span class="n">exchange</span><span class="p">}</span>
@@ -115,7 +135,10 @@
             <span class="k">for</span> <span class="n">pair</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                 <span class="k">yield</span> <span class="n">Feature</span><span class="p">(</span><span class="n">exchange</span><span class="o">=</span><span class="n">exchange</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="n">pair</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Features_Request.pairs"><a class="viewcode-back" href="../../autoapi/pyamber/features/index.html#pyamber.features.Features_Request.pairs">[docs]</a>    <span class="k">def</span> <span class="nf">pairs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Features_Request.pairs">
+<a class="viewcode-back" href="../../autoapi/pyamber/features/index.html#pyamber.features.Features_Request.pairs">[docs]</a>
+    <span class="k">def</span> <span class="nf">pairs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://web3api.io/api/v2/market/pairs&quot;</span>
 
         <span class="n">pair</span> <span class="o">=</span> <span class="n">pair</span> <span class="ow">or</span> <span class="p">[]</span>
@@ -129,7 +152,10 @@
             <span class="k">for</span> <span class="n">exchange</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                 <span class="k">yield</span> <span class="n">Feature</span><span class="p">(</span><span class="n">pair</span><span class="o">=</span><span class="n">pair</span><span class="p">,</span> <span class="n">exchange</span><span class="o">=</span><span class="n">exchange</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Features_Request.trades"><a class="viewcode-back" href="../../autoapi/pyamber/features/index.html#pyamber.features.Features_Request.trades">[docs]</a>    <span class="k">def</span> <span class="nf">trades</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Features_Request.trades">
+<a class="viewcode-back" href="../../autoapi/pyamber/features/index.html#pyamber.features.Features_Request.trades">[docs]</a>
+    <span class="k">def</span> <span class="nf">trades</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchange</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://web3api.io/api/v2/market/trades/information&quot;</span>
 
         <span class="n">exchange</span> <span class="o">=</span> <span class="n">exchange</span> <span class="ow">or</span> <span class="p">[]</span>
@@ -139,7 +165,9 @@
 
         <span class="k">for</span> <span class="n">exchange</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">payload</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">pair</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="k">yield</span> <span class="n">Feature</span><span class="p">(</span><span class="n">pair</span><span class="o">=</span><span class="n">pair</span><span class="p">,</span> <span class="n">exchange</span><span class="o">=</span><span class="n">exchange</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div></div>
+                <span class="k">yield</span> <span class="n">Feature</span><span class="p">(</span><span class="n">pair</span><span class="o">=</span><span class="n">pair</span><span class="p">,</span> <span class="n">exchange</span><span class="o">=</span><span class="n">exchange</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div>
+</div>
+
 </pre></div>
 
            </div>

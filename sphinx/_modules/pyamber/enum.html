@@ -12,11 +12,11 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -27,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> amberdata
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            amberdata
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -57,10 +61,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-          <li><a href="../pyamber.html">pyamber</a> &raquo;</li>
-      <li>pyamber.enum</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../pyamber.html">pyamber</a></li>
+      <li class="breadcrumb-item active">pyamber.enum</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -75,17 +79,44 @@
 <span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
 
 
-<div class="viewcode-block" id="TimeFormat"><a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeFormat">[docs]</a><span class="k">class</span> <span class="nc">TimeFormat</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-<div class="viewcode-block" id="TimeFormat.MILLISECONDS"><a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeFormat.MILLISECONDS">[docs]</a>    <span class="n">MILLISECONDS</span> <span class="o">=</span> <span class="s2">&quot;milliseconds&quot;</span></div>
-<div class="viewcode-block" id="TimeFormat.MS"><a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeFormat.MS">[docs]</a>    <span class="n">MS</span> <span class="o">=</span> <span class="s2">&quot;ms&quot;</span></div>
-<div class="viewcode-block" id="TimeFormat.ISO"><a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeFormat.ISO">[docs]</a>    <span class="n">ISO</span> <span class="o">=</span> <span class="s2">&quot;iso&quot;</span></div>
-<div class="viewcode-block" id="TimeFormat.ISO8611"><a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeFormat.ISO8611">[docs]</a>    <span class="n">ISO8611</span> <span class="o">=</span> <span class="s2">&quot;iso8611&quot;</span></div></div>
+<div class="viewcode-block" id="TimeFormat">
+<a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeFormat">[docs]</a>
+<span class="k">class</span> <span class="nc">TimeFormat</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<div class="viewcode-block" id="TimeFormat.MILLISECONDS">
+<a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeFormat.MILLISECONDS">[docs]</a>
+    <span class="n">MILLISECONDS</span> <span class="o">=</span> <span class="s2">&quot;milliseconds&quot;</span></div>
+
+<div class="viewcode-block" id="TimeFormat.MS">
+<a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeFormat.MS">[docs]</a>
+    <span class="n">MS</span> <span class="o">=</span> <span class="s2">&quot;ms&quot;</span></div>
+
+<div class="viewcode-block" id="TimeFormat.ISO">
+<a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeFormat.ISO">[docs]</a>
+    <span class="n">ISO</span> <span class="o">=</span> <span class="s2">&quot;iso&quot;</span></div>
+
+<div class="viewcode-block" id="TimeFormat.ISO8611">
+<a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeFormat.ISO8611">[docs]</a>
+    <span class="n">ISO8611</span> <span class="o">=</span> <span class="s2">&quot;iso8611&quot;</span></div>
+</div>
 
 
-<div class="viewcode-block" id="TimeInterval"><a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeInterval">[docs]</a><span class="k">class</span> <span class="nc">TimeInterval</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-<div class="viewcode-block" id="TimeInterval.DAYS"><a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeInterval.DAYS">[docs]</a>    <span class="n">DAYS</span> <span class="o">=</span> <span class="s2">&quot;days&quot;</span></div>
-<div class="viewcode-block" id="TimeInterval.HOURS"><a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeInterval.HOURS">[docs]</a>    <span class="n">HOURS</span> <span class="o">=</span> <span class="s2">&quot;hours&quot;</span></div>
-<div class="viewcode-block" id="TimeInterval.MINUTES"><a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeInterval.MINUTES">[docs]</a>    <span class="n">MINUTES</span> <span class="o">=</span> <span class="s2">&quot;minutes&quot;</span></div></div>
+
+<div class="viewcode-block" id="TimeInterval">
+<a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeInterval">[docs]</a>
+<span class="k">class</span> <span class="nc">TimeInterval</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<div class="viewcode-block" id="TimeInterval.DAYS">
+<a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeInterval.DAYS">[docs]</a>
+    <span class="n">DAYS</span> <span class="o">=</span> <span class="s2">&quot;days&quot;</span></div>
+
+<div class="viewcode-block" id="TimeInterval.HOURS">
+<a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeInterval.HOURS">[docs]</a>
+    <span class="n">HOURS</span> <span class="o">=</span> <span class="s2">&quot;hours&quot;</span></div>
+
+<div class="viewcode-block" id="TimeInterval.MINUTES">
+<a class="viewcode-back" href="../../autoapi/pyamber/enum/index.html#pyamber.enum.TimeInterval.MINUTES">[docs]</a>
+    <span class="n">MINUTES</span> <span class="o">=</span> <span class="s2">&quot;minutes&quot;</span></div>
+</div>
+
 </pre></div>
 
            </div>

@@ -26,29 +26,29 @@ Attributes
 
 
 .. py:data:: Feature
-   
 
    
 
 .. py:class:: Features_Request(request)
 
-   .. py:method:: exchanges(self, exchanges=None, pair=None, logger=None)
+
+   .. py:method:: exchanges(exchanges=None, pair=None, logger=None)
       :abstractmethod:
 
 
-   .. py:method:: price_pairs(self, logger=None)
+   .. py:method:: price_pairs(logger=None)
 
 
-   .. py:method:: ohlcv_pairs(self, exchange=None, logger=None)
+   .. py:method:: ohlcv_pairs(exchange=None, logger=None)
 
 
-   .. py:method:: ticker_pairs(self, exchange=None, logger=None)
+   .. py:method:: ticker_pairs(exchange=None, logger=None)
 
 
-   .. py:method:: pairs(self, exchange=None, pair=None, logger=None)
+   .. py:method:: pairs(exchange=None, pair=None, logger=None)
 
 
-   .. py:method:: trades(self, exchange=None, logger=None)
+   .. py:method:: trades(exchange=None, logger=None)
 
 
 
