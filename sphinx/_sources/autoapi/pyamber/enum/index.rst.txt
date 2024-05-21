@@ -1,14 +1,11 @@
-:py:mod:`pyamber.enum`
-======================
+pyamber.enum
+============
 
 .. py:module:: pyamber.enum
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
@@ -16,60 +13,61 @@ Classes
    pyamber.enum.TimeInterval
 
 
-
+Module Contents
+---------------
 
 .. py:class:: TimeFormat
 
-
    Bases: :py:obj:`enum.Enum`
+
 
    Generic enumeration.
 
    Derive from this class to define new enumerations.
+
 
    .. py:attribute:: MILLISECONDS
       :value: 'milliseconds'
 
-      
+
 
    .. py:attribute:: MS
       :value: 'ms'
 
-      
+
 
    .. py:attribute:: ISO
       :value: 'iso'
 
-      
+
 
    .. py:attribute:: ISO8611
       :value: 'iso8611'
 
-      
 
 
 .. py:class:: TimeInterval
 
-
    Bases: :py:obj:`enum.Enum`
+
 
    Generic enumeration.
 
    Derive from this class to define new enumerations.
 
+
    .. py:attribute:: DAYS
       :value: 'days'
 
-      
+
 
    .. py:attribute:: HOURS
       :value: 'hours'
 
-      
+
 
    .. py:attribute:: MINUTES
       :value: 'minutes'
 
-      
 
 

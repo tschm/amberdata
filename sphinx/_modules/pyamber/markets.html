@@ -88,13 +88,13 @@
 
 
 <div class="viewcode-block" id="OhlcvRequest">
-<a class="viewcode-back" href="../../autoapi/pyamber/markets/index.html#pyamber.markets.OhlcvRequest">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyamber/request/index.html#pyamber.markets.OhlcvRequest">[docs]</a>
 <span class="k">class</span> <span class="nc">OhlcvRequest</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__request</span> <span class="o">=</span> <span class="n">request</span>
 
 <div class="viewcode-block" id="OhlcvRequest.history">
-<a class="viewcode-back" href="../../autoapi/pyamber/markets/index.html#pyamber.markets.OhlcvRequest.history">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyamber/request/index.html#pyamber.markets.OhlcvRequest.history">[docs]</a>
     <span class="k">def</span> <span class="nf">history</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">pair</span><span class="p">,</span>
@@ -140,7 +140,7 @@
 
 
 <div class="viewcode-block" id="OhlcvRequest.latest">
-<a class="viewcode-back" href="../../autoapi/pyamber/markets/index.html#pyamber.markets.OhlcvRequest.latest">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyamber/request/index.html#pyamber.markets.OhlcvRequest.latest">[docs]</a>
     <span class="k">def</span> <span class="nf">latest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pair</span><span class="p">,</span> <span class="n">exchange</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://web3api.io/api/v2/market/ohlcv/</span><span class="si">{pair}</span><span class="s2">/latest&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pair</span><span class="o">=</span><span class="n">pair</span><span class="p">)</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;exchange&quot;</span><span class="p">:</span> <span class="n">exchange</span><span class="p">}</span>
@@ -156,13 +156,13 @@
 
 
 <div class="viewcode-block" id="PriceRequest">
-<a class="viewcode-back" href="../../autoapi/pyamber/markets/index.html#pyamber.markets.PriceRequest">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyamber/request/index.html#pyamber.markets.PriceRequest">[docs]</a>
 <span class="k">class</span> <span class="nc">PriceRequest</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__request</span> <span class="o">=</span> <span class="n">request</span>
 
 <div class="viewcode-block" id="PriceRequest.latest">
-<a class="viewcode-back" href="../../autoapi/pyamber/markets/index.html#pyamber.markets.PriceRequest.latest">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyamber/request/index.html#pyamber.markets.PriceRequest.latest">[docs]</a>
     <span class="k">def</span> <span class="nf">latest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pair</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">def</span> <span class="nf">__dict2series</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="mf">1e6</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">])):</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]})</span>
@@ -177,7 +177,7 @@
 
 
 <div class="viewcode-block" id="PriceRequest.history">
-<a class="viewcode-back" href="../../autoapi/pyamber/markets/index.html#pyamber.markets.PriceRequest.history">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyamber/request/index.html#pyamber.markets.PriceRequest.history">[docs]</a>
     <span class="k">def</span> <span class="nf">history</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">pair</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">time_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">):</span>
@@ -223,13 +223,13 @@
 
 
 <div class="viewcode-block" id="BidAskRequest">
-<a class="viewcode-back" href="../../autoapi/pyamber/markets/index.html#pyamber.markets.BidAskRequest">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyamber/request/index.html#pyamber.markets.BidAskRequest">[docs]</a>
 <span class="k">class</span> <span class="nc">BidAskRequest</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__request</span> <span class="o">=</span> <span class="n">request</span>
 
 <div class="viewcode-block" id="BidAskRequest.history">
-<a class="viewcode-back" href="../../autoapi/pyamber/markets/index.html#pyamber.markets.BidAskRequest.history">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyamber/request/index.html#pyamber.markets.BidAskRequest.history">[docs]</a>
     <span class="k">def</span> <span class="nf">history</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pair</span><span class="p">,</span> <span class="n">exchange</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">start_date</span> <span class="o">=</span> <span class="n">start_date</span> <span class="ow">or</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;today&quot;</span><span class="p">)</span>
         <span class="n">end_date</span> <span class="o">=</span> <span class="n">end_date</span> <span class="ow">or</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;today&quot;</span><span class="p">)</span>
@@ -265,7 +265,7 @@
 
 
 <div class="viewcode-block" id="BidAskRequest.latest">
-<a class="viewcode-back" href="../../autoapi/pyamber/markets/index.html#pyamber.markets.BidAskRequest.latest">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyamber/request/index.html#pyamber.markets.BidAskRequest.latest">[docs]</a>
     <span class="k">def</span> <span class="nf">latest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pair</span><span class="p">,</span> <span class="n">exchange</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://web3api.io/api/v2/market/tickers/</span><span class="si">{pair}</span><span class="s2">/latest&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pair</span><span class="o">=</span><span class="n">pair</span><span class="p">)</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;exchange&quot;</span><span class="p">:</span> <span class="n">exchange</span><span class="p">}</span>

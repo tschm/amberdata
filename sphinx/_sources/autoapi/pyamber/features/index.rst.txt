@@ -1,39 +1,35 @@
-:py:mod:`pyamber.features`
-==========================
+pyamber.features
+================
 
 .. py:module:: pyamber.features
 
 
-Module Contents
----------------
-
-Classes
-~~~~~~~
-
-.. autoapisummary::
-
-   pyamber.features.Features_Request
-
-
-
-
 Attributes
-~~~~~~~~~~
+----------
 
 .. autoapisummary::
 
    pyamber.features.Feature
 
 
-.. py:data:: Feature
+Classes
+-------
 
-   
+.. autoapisummary::
+
+   pyamber.features.Features_Request
+
+
+Module Contents
+---------------
+
+.. py:data:: Feature
 
 .. py:class:: Features_Request(request)
 
-
    .. py:method:: exchanges(exchanges=None, pair=None, logger=None)
       :abstractmethod:
+
 
 
    .. py:method:: price_pairs(logger=None)
@@ -49,6 +45,5 @@ Attributes
 
 
    .. py:method:: trades(exchange=None, logger=None)
-
 
 

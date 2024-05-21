@@ -1,22 +1,19 @@
-:py:mod:`pyamber.util`
-======================
+pyamber.util
+============
 
 .. py:module:: pyamber.util
 
 
-Module Contents
----------------
-
-
 Functions
-~~~~~~~~~
+---------
 
 .. autoapisummary::
 
    pyamber.util.frames
 
 
+Module Contents
+---------------
 
 .. py:function:: frames(x)
-
 

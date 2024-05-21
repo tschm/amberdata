@@ -1,26 +1,101 @@
-:py:mod:`pyamber.markets`
-=========================
+pyamber.markets
+===============
 
 .. py:module:: pyamber.markets
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
+   pyamber.markets.TimeFormat
+   pyamber.markets.TimeInterval
    pyamber.markets.OhlcvRequest
    pyamber.markets.PriceRequest
    pyamber.markets.BidAskRequest
 
 
+Functions
+---------
 
+.. autoapisummary::
+
+   pyamber.markets.intervals
+   pyamber.markets.frames
+
+
+Module Contents
+---------------
+
+.. py:class:: TimeFormat
+
+   Bases: :py:obj:`enum.Enum`
+
+
+   Generic enumeration.
+
+   Derive from this class to define new enumerations.
+
+
+   .. py:attribute:: MILLISECONDS
+      :value: 'milliseconds'
+
+
+
+   .. py:attribute:: MS
+      :value: 'ms'
+
+
+
+   .. py:attribute:: ISO
+      :value: 'iso'
+
+
+
+   .. py:attribute:: ISO8611
+      :value: 'iso8611'
+
+
+
+.. py:class:: TimeInterval
+
+   Bases: :py:obj:`enum.Enum`
+
+
+   Generic enumeration.
+
+   Derive from this class to define new enumerations.
+
+
+   .. py:attribute:: DAYS
+      :value: 'days'
+
+
+
+   .. py:attribute:: HOURS
+      :value: 'hours'
+
+
+
+   .. py:attribute:: MINUTES
+      :value: 'minutes'
+
+
+
+.. py:function:: intervals(start_date: pandas.Timestamp, end_date: pandas.Timestamp, freq: pandas.Timedelta = pd.Timedelta(days=20))
+
+   Constructs an iterator (start_date, t2), (t2, t3), ..., (t_{n-1}, end_date). This is used to address the pagination
+   of amberdata.
+
+   :param start_date: First date
+   :param end_date: Last date
+   :param freq: Gap between Dates (this parameter is induced by amberdata)
+
+
+.. py:function:: frames(x)
 
 .. py:class:: OhlcvRequest(request)
-
 
    .. py:method:: history(pair, exchange, start_date=None, end_date=None, time_interval=None, logger=None)
 
@@ -28,9 +103,7 @@ Classes
    .. py:method:: latest(pair, exchange, logger=None)
 
 
-
 .. py:class:: PriceRequest(request)
-
 
    .. py:method:: latest(pair, logger=None)
 
@@ -38,14 +111,11 @@ Classes
    .. py:method:: history(pair, start_date=None, end_date=None, time_interval=None, logger=None)
 
 
-
 .. py:class:: BidAskRequest(request)
-
 
    .. py:method:: history(pair, exchange, start_date=None, end_date=None, logger=None)
 
 
    .. py:method:: latest(pair, exchange, logger=None)
-
 
 

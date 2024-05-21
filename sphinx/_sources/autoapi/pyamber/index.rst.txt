@@ -1,22 +1,34 @@
-:py:mod:`pyamber`
-=================
+pyamber
+=======
 
 .. py:module:: pyamber
 
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   enum/index.rst
-   features/index.rst
-   flask_amberdata/index.rst
-   intervals/index.rst
-   markets/index.rst
-   request/index.rst
-   util/index.rst
+   /autoapi/pyamber/enum/index
+   /autoapi/pyamber/features/index
+   /autoapi/pyamber/flask_amberdata/index
+   /autoapi/pyamber/intervals/index
+   /autoapi/pyamber/markets/index
+   /autoapi/pyamber/request/index
+   /autoapi/pyamber/util/index
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pyamber.__title__
+   pyamber.__version__
+   pyamber.__author__
+   pyamber.__license__
+   pyamber.__copyright__
 
 
 Package Contents
@@ -25,25 +37,20 @@ Package Contents
 .. py:data:: __title__
    :value: 'pyamber'
 
-   
 
 .. py:data:: __version__
    :value: '0.1.1'
 
-   
 
 .. py:data:: __author__
    :value: 'Thomas Schmelzer'
 
-   
 
 .. py:data:: __license__
    :value: 'MIT'
 
-   
 
 .. py:data:: __copyright__
    :value: 'Copyright 2020 by Thomas Schmelzer'
 
-   
 
