@@ -25,35 +25,11 @@ Classes
 
 .. autoapisummary::
 
-   pyamber.flask_amberdata.AmberRequest
    pyamber.flask_amberdata.Amberdata
 
 
 Module Contents
 ---------------
-
-.. py:class:: AmberRequest(key)
-
-   .. py:property:: prices
-
-
-   .. py:property:: ohlcv
-
-
-   .. py:property:: bid_ask
-
-
-   .. py:property:: headers
-
-
-   .. py:property:: features
-
-
-   .. py:method:: get(url, params=None, logger=None)
-
-
-   .. py:property:: health
-
 
 .. py:exception:: InvalidSettingsError
 

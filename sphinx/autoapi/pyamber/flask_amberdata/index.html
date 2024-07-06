@@ -122,10 +122,7 @@
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#pyamber.flask_amberdata.AmberRequest" title="pyamber.flask_amberdata.AmberRequest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AmberRequest</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#pyamber.flask_amberdata.Amberdata" title="pyamber.flask_amberdata.Amberdata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Amberdata</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyamber.flask_amberdata.Amberdata" title="pyamber.flask_amberdata.Amberdata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Amberdata</span></code></a></p></td>
 <td><p>Main class used for initialization of Flask-Amberdata.</p></td>
 </tr>
 </tbody>
@@ -133,46 +130,6 @@
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="pyamber.flask_amberdata.AmberRequest">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyamber.flask_amberdata.</span></span><span class="sig-name descname"><span class="pre">AmberRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyamber/request.html#AmberRequest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyamber.flask_amberdata.AmberRequest" title="Link to this definition"></a></dt>
-<dd><dl class="py property">
-<dt class="sig sig-object py" id="pyamber.flask_amberdata.AmberRequest.prices">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">prices</span></span><a class="headerlink" href="#pyamber.flask_amberdata.AmberRequest.prices" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pyamber.flask_amberdata.AmberRequest.ohlcv">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ohlcv</span></span><a class="headerlink" href="#pyamber.flask_amberdata.AmberRequest.ohlcv" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pyamber.flask_amberdata.AmberRequest.bid_ask">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bid_ask</span></span><a class="headerlink" href="#pyamber.flask_amberdata.AmberRequest.bid_ask" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pyamber.flask_amberdata.AmberRequest.headers">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">headers</span></span><a class="headerlink" href="#pyamber.flask_amberdata.AmberRequest.headers" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pyamber.flask_amberdata.AmberRequest.features">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">features</span></span><a class="headerlink" href="#pyamber.flask_amberdata.AmberRequest.features" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pyamber.flask_amberdata.AmberRequest.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyamber/request.html#AmberRequest.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyamber.flask_amberdata.AmberRequest.get" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pyamber.flask_amberdata.AmberRequest.health">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">health</span></span><a class="headerlink" href="#pyamber.flask_amberdata.AmberRequest.health" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <dl class="py exception">
 <dt class="sig sig-object py" id="pyamber.flask_amberdata.InvalidSettingsError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyamber.flask_amberdata.</span></span><span class="sig-name descname"><span class="pre">InvalidSettingsError</span></span><a class="reference internal" href="../../../_modules/pyamber/flask_amberdata.html#InvalidSettingsError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyamber.flask_amberdata.InvalidSettingsError" title="Link to this definition"></a></dt>

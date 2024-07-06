@@ -9,61 +9,11 @@ Classes
 
 .. autoapisummary::
 
-   pyamber.request.Features_Request
-   pyamber.request.BidAskRequest
-   pyamber.request.OhlcvRequest
-   pyamber.request.PriceRequest
    pyamber.request.AmberRequest
 
 
 Module Contents
 ---------------
-
-.. py:class:: Features_Request(request)
-
-   .. py:method:: exchanges(exchanges=None, pair=None, logger=None)
-      :abstractmethod:
-
-
-
-   .. py:method:: price_pairs(logger=None)
-
-
-   .. py:method:: ohlcv_pairs(exchange=None, logger=None)
-
-
-   .. py:method:: ticker_pairs(exchange=None, logger=None)
-
-
-   .. py:method:: pairs(exchange=None, pair=None, logger=None)
-
-
-   .. py:method:: trades(exchange=None, logger=None)
-
-
-.. py:class:: BidAskRequest(request)
-
-   .. py:method:: history(pair, exchange, start_date=None, end_date=None, logger=None)
-
-
-   .. py:method:: latest(pair, exchange, logger=None)
-
-
-.. py:class:: OhlcvRequest(request)
-
-   .. py:method:: history(pair, exchange, start_date=None, end_date=None, time_interval=None, logger=None)
-
-
-   .. py:method:: latest(pair, exchange, logger=None)
-
-
-.. py:class:: PriceRequest(request)
-
-   .. py:method:: latest(pair, logger=None)
-
-
-   .. py:method:: history(pair, start_date=None, end_date=None, time_interval=None, logger=None)
-
 
 .. py:class:: AmberRequest(key)
 
