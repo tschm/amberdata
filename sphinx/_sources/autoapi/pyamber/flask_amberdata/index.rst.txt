@@ -44,6 +44,11 @@ Module Contents
    Main class used for initialization of Flask-Amberdata.
 
 
+   .. py:attribute:: app
+      :value: None
+
+
+
    .. py:method:: __create_request(config)
       :staticmethod:
 

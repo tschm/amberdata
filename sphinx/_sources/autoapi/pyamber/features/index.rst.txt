@@ -27,6 +27,9 @@ Module Contents
 
 .. py:class:: Features_Request(request)
 
+   .. py:attribute:: __request
+
+
    .. py:method:: exchanges(exchanges=None, pair=None, logger=None)
       :abstractmethod:
 

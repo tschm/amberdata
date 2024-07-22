@@ -17,6 +17,9 @@ Module Contents
 
 .. py:class:: AmberRequest(key)
 
+   .. py:attribute:: __key
+
+
    .. py:property:: prices
 
 
