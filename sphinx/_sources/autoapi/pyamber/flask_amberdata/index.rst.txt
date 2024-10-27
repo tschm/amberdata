@@ -62,6 +62,7 @@ Module Contents
 
 
    .. py:property:: request
+
       Return Amberdata request associated with this flask instance.
 
 
