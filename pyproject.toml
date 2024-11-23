@@ -13,11 +13,12 @@ requests = "*"
 pandas = "*"
 flask = "*"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pytest = "*"
 pytest-cov = "*"
 httpretty = "*"
 requests-mock = "*"
+pre-commit = "*"
 
 [build-system]
 requires = ["poetry>=1.6.0"]
