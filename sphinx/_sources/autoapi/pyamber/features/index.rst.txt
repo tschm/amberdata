@@ -4,26 +4,31 @@ pyamber.features
 .. py:module:: pyamber.features
 
 
-Attributes
-----------
-
-.. autoapisummary::
-
-   pyamber.features.Feature
-
-
 Classes
 -------
 
 .. autoapisummary::
 
+   pyamber.features.Feature
    pyamber.features.Features_Request
 
 
 Module Contents
 ---------------
 
-.. py:data:: Feature
+.. py:class:: Feature
+
+   Bases: :py:obj:`tuple`
+
+
+   .. py:attribute:: exchange
+
+
+   .. py:attribute:: pair
+
+
+   .. py:attribute:: data
+
 
 .. py:class:: Features_Request(request)
 
