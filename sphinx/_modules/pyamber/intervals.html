@@ -99,7 +99,7 @@
     <span class="k">if</span> <span class="n">start_date</span> <span class="o">==</span> <span class="n">end_date</span><span class="p">:</span>
         <span class="k">yield</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># contruct t1 = start_date, t2, t3, ... t_{n-1} &lt;= end_date</span>
+        <span class="c1"># construct t1 = start_date, t2, t3, ... t_{n-1} &lt;= end_date</span>
         <span class="n">stamps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end_date</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="n">freq</span><span class="p">)</span>
         <span class="c1"># it&#39;s important to explicitly append the end_date. If end_date == t_{n-1} this step has no impact.</span>
         <span class="n">stamps</span> <span class="o">=</span> <span class="n">stamps</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
