@@ -57,14 +57,10 @@ def test_ohlcv_latest(resource_dir):
             "https://web3api.io/api/v2/market/ohlcv/eth_usd/latest",
             json=read_json(resource_dir / "ohlcv_latest.json"),
         )
-        for exchange, series in AmberRequest(key="a").ohlcv.latest(
-            pair="eth_usd", exchange="bitfinex"
-        ):
+        for exchange, series in AmberRequest(key="a").ohlcv.latest(pair="eth_usd", exchange="bitfinex"):
             assert exchange == "bitfinex"
 
-            x = pd.read_csv(
-                resource_dir / "ohlcv_latest.csv", index_col=0, header=None
-            ).squeeze()
+            x = pd.read_csv(resource_dir / "ohlcv_latest.csv", index_col=0, header=None).squeeze()
             x["timestamp"] = pd.Timestamp(x["timestamp"])
 
             for key in {"open", "high", "low", "close", "volume"}:
@@ -79,14 +75,10 @@ def test_bid_ask_latest(resource_dir):
             "https://web3api.io/api/v2/market/tickers/eth_usd/latest",
             json=read_json(resource_dir / "bidask_latest.json"),
         )
-        for exchange, series in AmberRequest(key="a").bid_ask.latest(
-            pair="eth_usd", exchange="bitfinex"
-        ):
+        for exchange, series in AmberRequest(key="a").bid_ask.latest(pair="eth_usd", exchange="bitfinex"):
             assert exchange == "bitfinex"
 
-            x = pd.read_csv(
-                resource_dir / "bidask_latest.csv", index_col=0, header=None
-            ).squeeze()
+            x = pd.read_csv(resource_dir / "bidask_latest.csv", index_col=0, header=None).squeeze()
             x["timestamp"] = pd.Timestamp(x["timestamp"])
 
             for key in {"bid", "ask", "mid", "last"}:
@@ -110,9 +102,7 @@ def test_bidask_history(resource_dir):
             assert exchange == "bitfinex"
             pt.assert_frame_equal(
                 data,
-                pd.read_csv(
-                    resource_dir / "bidask_history.csv", index_col=0, parse_dates=True
-                ),
+                pd.read_csv(resource_dir / "bidask_history.csv", index_col=0, parse_dates=True),
             )
 
 
@@ -141,9 +131,7 @@ def test_ohlcv_history(resource_dir):
             assert exchange == "bitfinex"
             pt.assert_frame_equal(
                 data,
-                pd.read_csv(
-                    resource_dir / "ohlcv_history.csv", index_col=0, parse_dates=True
-                ),
+                pd.read_csv(resource_dir / "ohlcv_history.csv", index_col=0, parse_dates=True),
             )
 
 
@@ -161,7 +149,5 @@ def test_prices_history(resource_dir):
         )
         pt.assert_frame_equal(
             x,
-            pd.read_csv(
-                resource_dir / "prices_history.csv", index_col=0, parse_dates=True
-            ),
+            pd.read_csv(resource_dir / "prices_history.csv", index_col=0, parse_dates=True),
         )

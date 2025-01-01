@@ -45,16 +45,12 @@ if __name__ == "__main__":
         print(output.getvalue())
 
         output = StringIO()
-        for exchange, series in request.ohlcv.latest(
-            pair="eth_usd", exchange="bitfinex", logger=log
-        ):
+        for exchange, series in request.ohlcv.latest(pair="eth_usd", exchange="bitfinex", logger=log):
             series.to_csv(output, header=False)
             print(output.getvalue())
 
         output = StringIO()
-        for exchange, series in request.bid_ask.latest(
-            pair="eth_usd", exchange="bitfinex", logger=log
-        ):
+        for exchange, series in request.bid_ask.latest(pair="eth_usd", exchange="bitfinex", logger=log):
             series.to_csv(output, header=False)
             print(output.getvalue())
 

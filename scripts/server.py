@@ -47,9 +47,7 @@ if __name__ == "__main__":
 
         # assert False
 
-        for exchange, data in amberdata.request.bid_ask.latest(
-            "eth_usd", exchange="bitfinex,bitstamp"
-        ):
+        for exchange, data in amberdata.request.bid_ask.latest("eth_usd", exchange="bitfinex,bitstamp"):
             print(exchange)
             print(data)
 

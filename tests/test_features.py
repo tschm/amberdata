@@ -24,10 +24,7 @@ def test_trades(resource_dir):
             "https://web3api.io/api/v2/market/trades/information?exchange=binance",
             json=read_json(resource_dir / "trades.json"),
         )
-        xxx = [
-            (f.pair, f.exchange)
-            for f in AmberRequest(key="a").features.trades(exchange="binance")
-        ]
+        xxx = [(f.pair, f.exchange) for f in AmberRequest(key="a").features.trades(exchange="binance")]
         assert xxx == [("adx_bnb", "binance")]
 
 
