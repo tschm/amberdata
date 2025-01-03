@@ -8,12 +8,14 @@ jobs:
     steps:
       - uses: cvxgrp/.github/actions/uv/pdoc@main
         with:
-          source-folder: "cvx"
+          source-folder: "pyamber"
 
 
   test:
     steps:
       - uses: cvxgrp/.github/actions/uv/coverage@main
+        with:
+          source-folder: "pyamber"
 
   book:
     needs: [test, pdoc]
