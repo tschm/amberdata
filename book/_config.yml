@@ -9,7 +9,7 @@ parse:
   myst_enable_extensions:
     - substitution
   myst_substitutions:
-    book_url: https://tschm.github.io/amberdata/book
+    book_url: https://tschm.github.io/amberdata
 
 
 # Information about where the book exists on the web
