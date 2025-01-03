@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>amberdata &#8212; amberdata</title>
+    <title>pyamber &#8212; amberdata</title>
   
   
   
@@ -159,7 +159,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    amberdata
+                    pyamber
                 </a>
             </li>
         </ul>
@@ -348,7 +348,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>amberdata</h1>
+    <h1>pyamber</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -358,8 +358,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#poetry">Poetry</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel">Kernel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-pyamber">Installing pyamber</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amberrequest">AmberRequest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#settings-cfg">Settings.cfg</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flask-amberdata">Flask-AmberData</a></li>
 </ul>
             </nav>
         </div>
@@ -371,23 +373,67 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="amberdata">
-<h1>amberdata<a class="headerlink" href="#amberdata" title="Link to this heading">#</a></h1>
-<section id="poetry">
-<h2>Poetry<a class="headerlink" href="#poetry" title="Link to this heading">#</a></h2>
-<p>We assume you share already the love for <a class="reference external" href="https://python-poetry.org">Poetry</a>. Once you have installed poetry you can perform</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>install
+  <section id="pyamber">
+<h1><a class="reference external" href="https://tschm.github.io/amberdata/book">pyamber</a><a class="headerlink" href="#pyamber" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://results.pre-commit.ci/latest/github/tschm/amberdata/main"><img alt="pre-commit.ci status" src="https://results.pre-commit.ci/badge/github/tschm/amberdata/main.svg" /></a></p>
+<p><a class="reference external" href="https://codespaces.new/tschm/pyamber"><img alt="Open in GitHub Codespaces" src="https://github.com/codespaces/badge.svg" /></a></p>
+<p>Some utility code for interacting with amberdata.
+For more information on amberdata please check out
+<a class="reference external" href="https://amberdata.io/">https://amberdata.io/</a>.</p>
+<section id="installing-pyamber">
+<h2>Installing pyamber<a class="headerlink" href="#installing-pyamber" title="Link to this heading">#</a></h2>
+<p>Install with pip</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pyamber
 </pre></div>
 </div>
-<p>to replicate the virtual environment we have defined in pyproject.toml.</p>
 </section>
-<section id="kernel">
-<h2>Kernel<a class="headerlink" href="#kernel" title="Link to this heading">#</a></h2>
-<p>We install <a class="reference external" href="https://jupyter.org">JupyterLab</a> within your new virtual environment. Executing</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>kernel
+<section id="amberrequest">
+<h2>AmberRequest<a class="headerlink" href="#amberrequest" title="Link to this heading">#</a></h2>
+<p>AmberRequest is a class hiding the management of your key, the pagination of
+requests and conversion of your results to standard pandas containers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyamber.request</span> <span class="kn">import</span> <span class="n">AmberRequest</span><span class="p">,</span> <span class="n">TimeInterval</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">AmberRequest</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">prices</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">pair</span><span class="o">=</span><span class="s2">&quot;eth_usd&quot;</span><span class="p">,</span> <span class="n">time_interval</span><span class="o">=</span><span class="n">TimeInterval</span><span class="o">.</span><span class="n">HOURS</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
 </pre></div>
 </div>
-<p>constructs a dedicated <a class="reference external" href="https://docs.jupyter.org/en/latest/projects/kernels.html">Kernel</a> for the project.</p>
+</section>
+<section id="settings-cfg">
+<h2>Settings.cfg<a class="headerlink" href="#settings-cfg" title="Link to this heading">#</a></h2>
+<p>We recommend to define a configuration file <code class="docutils literal notranslate"><span class="pre">(*.cfg)</span></code> containing</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">AMBERDATA</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x-api-key&#39;</span><span class="p">:</span> <span class="s1">&#39;ENTER YOUR KEY HERE&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="flask-amberdata">
+<h2>Flask-AmberData<a class="headerlink" href="#flask-amberdata" title="Link to this heading">#</a></h2>
+<p>A Flask extension that provides integration with AmberData. In particular this
+flask extension provides management of your AmberRequests.
+You can use configuration files such as settings.cfg to follow standard
+flask practices. The configuration is easy, just fetch the extension:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+
+<span class="kn">from</span> <span class="nn">pyamber.flask_amberdata</span> <span class="kn">import</span> <span class="n">amberdata</span>
+<span class="kn">from</span> <span class="nn">pyamber.request</span> <span class="kn">import</span> <span class="n">TimeInterval</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_pyfile</span><span class="p">(</span><span class="s1">&#39;/amberdata/config/settings.cfg&#39;</span><span class="p">)</span>
+    <span class="n">amberdata</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">app_context</span><span class="p">():</span>
+        <span class="k">assert</span> <span class="n">amberdata</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">health</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">amberdata</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">prices</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="s2">&quot;eth_usd&quot;</span><span class="p">,</span>
+                                             <span class="n">time_interval</span><span class="o">=</span><span class="n">TimeInterval</span><span class="o">.</span><span class="n">DAYS</span><span class="p">,</span>
+                                             <span class="n">start_date</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2020-01-12&quot;</span><span class="p">),</span>
+                                             <span class="n">end_date</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2020-01-16&quot;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -449,8 +495,10 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#poetry">Poetry</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel">Kernel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-pyamber">Installing pyamber</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amberrequest">AmberRequest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#settings-cfg">Settings.cfg</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flask-amberdata">Flask-AmberData</a></li>
 </ul>
   </nav></div>
 

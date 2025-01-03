@@ -1,21 +1,68 @@
-# amberdata
+# [pyamber](https://tschm.github.io/amberdata/book)
 
-## Poetry
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/tschm/amberdata/main.svg)](https://results.pre-commit.ci/latest/github/tschm/amberdata/main)
 
-We assume you share already the love for [Poetry](https://python-poetry.org). Once you have installed poetry you can perform
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/tschm/pyamber)
 
-```bash
-make install
-```
+Some utility code for interacting with amberdata.
+For more information on amberdata please check out
+<https://amberdata.io/>.
 
-to replicate the virtual environment we have defined in pyproject.toml.
+## Installing pyamber
 
-## Kernel
-
-We install [JupyterLab](https://jupyter.org) within your new virtual environment. Executing
+Install with pip
 
 ```bash
-make kernel
+pip install pyamber
 ```
 
-constructs a dedicated [Kernel](https://docs.jupyter.org/en/latest/projects/kernels.html) for the project.
+## AmberRequest
+
+AmberRequest is a class hiding the management of your key, the pagination of
+requests and conversion of your results to standard pandas containers.
+
+```python
+from pyamber.request import AmberRequest, TimeInterval
+
+if __name__ == '__main__':
+    request = AmberRequest(key="...")
+    f = request.prices.history(pair="eth_usd", time_interval=TimeInterval.HOURS)
+    print(f)
+
+```
+
+## Settings.cfg
+
+We recommend to define a configuration file `(*.cfg)` containing
+
+```python
+AMBERDATA = {'x-api-key': 'ENTER YOUR KEY HERE'}
+```
+
+## Flask-AmberData
+
+A Flask extension that provides integration with AmberData. In particular this
+flask extension provides management of your AmberRequests.
+You can use configuration files such as settings.cfg to follow standard
+flask practices. The configuration is easy, just fetch the extension:
+
+```python
+import pandas as pd
+from flask import Flask
+
+from pyamber.flask_amberdata import amberdata
+from pyamber.request import TimeInterval
+
+if __name__ == '__main__':
+    app = Flask(__name__)
+    app.config.from_pyfile('/amberdata/config/settings.cfg')
+    amberdata.init_app(app)
+
+    with app.app_context():
+        assert amberdata.request.health
+        x = amberdata.request.prices.history("eth_usd",
+                                             time_interval=TimeInterval.DAYS,
+                                             start_date=pd.Timestamp("2020-01-12"),
+                                             end_date=pd.Timestamp("2020-01-16"))
+        print(x)
+```
