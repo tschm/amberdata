@@ -1,4 +1,4 @@
-# [pyamber](https://tschm.github.io/pyamber/book)
+# [pyamber](https://tschm.github.io/amberdata/book)
 
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/tschm/amberdata/main.svg)](https://results.pre-commit.ci/latest/github/tschm/amberdata/main)
 
