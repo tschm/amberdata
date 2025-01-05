@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -391,7 +391,7 @@ For more information on amberdata please check out
 <h2>AmberRequest<a class="headerlink" href="#amberrequest" title="Link to this heading">#</a></h2>
 <p>AmberRequest is a class hiding the management of your key, the pagination of
 requests and conversion of your results to standard pandas containers.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyamber.request</span> <span class="kn">import</span> <span class="n">AmberRequest</span><span class="p">,</span> <span class="n">TimeInterval</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyamber.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">AmberRequest</span><span class="p">,</span> <span class="n">TimeInterval</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">request</span> <span class="o">=</span> <span class="n">AmberRequest</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
@@ -414,11 +414,11 @@ requests and conversion of your results to standard pandas containers.</p>
 flask extension provides management of your AmberRequests.
 You can use configuration files such as settings.cfg to follow standard
 flask practices. The configuration is easy, just fetch the extension:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span>
 
-<span class="kn">from</span> <span class="nn">pyamber.flask_amberdata</span> <span class="kn">import</span> <span class="n">amberdata</span>
-<span class="kn">from</span> <span class="nn">pyamber.request</span> <span class="kn">import</span> <span class="n">TimeInterval</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyamber.flask_amberdata</span><span class="w"> </span><span class="kn">import</span> <span class="n">amberdata</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyamber.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">TimeInterval</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>

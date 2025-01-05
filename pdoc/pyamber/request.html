@@ -81,41 +81,41 @@
 
                         <label class="view-source-button" for="mod-request-view-source"><span>View Source</span></label>
 
-                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 </span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a>
-</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="kn">import</span> <span class="nn">logging</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a>
-</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="kn">import</span> <span class="nn">requests</span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 </span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a>
-</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">from</span> <span class="nn">pyamber.features</span> <span class="kn">import</span> <span class="n">Features_Request</span>
-</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="kn">from</span> <span class="nn">pyamber.markets</span> <span class="kn">import</span> <span class="n">BidAskRequest</span><span class="p">,</span> <span class="n">OhlcvRequest</span><span class="p">,</span> <span class="n">PriceRequest</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyamber.features</span><span class="w"> </span><span class="kn">import</span> <span class="n">Features_Request</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyamber.markets</span><span class="w"> </span><span class="kn">import</span> <span class="n">BidAskRequest</span><span class="p">,</span> <span class="n">OhlcvRequest</span><span class="p">,</span> <span class="n">PriceRequest</span>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>
 </span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="k">class</span> <span class="nc">AmberRequest</span><span class="p">:</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="k">class</span><span class="w"> </span><span class="nc">AmberRequest</span><span class="p">:</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">__key</span> <span class="o">=</span> <span class="n">key</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>
 </span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>    <span class="nd">@property</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>    <span class="k">def</span> <span class="nf">prices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">prices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>        <span class="k">return</span> <span class="n">PriceRequest</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>
 </span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>    <span class="nd">@property</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>    <span class="k">def</span> <span class="nf">ohlcv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">ohlcv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>        <span class="k">return</span> <span class="n">OhlcvRequest</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>
 </span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="nd">@property</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>    <span class="k">def</span> <span class="nf">bid_ask</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">bid_ask</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>        <span class="k">return</span> <span class="n">BidAskRequest</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>
 </span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="nd">@property</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="k">def</span> <span class="nf">headers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">headers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;accept&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span> <span class="s2">&quot;x-api-key&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__key</span><span class="p">}</span>
 </span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>
 </span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>    <span class="nd">@property</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="k">def</span> <span class="nf">features</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">features</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>        <span class="k">return</span> <span class="n">Features_Request</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 </span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>        <span class="n">log</span> <span class="o">=</span> <span class="n">logger</span> <span class="ow">or</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 </span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>
 </span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
@@ -127,7 +127,7 @@
 </span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;payload&quot;</span><span class="p">]</span>
 </span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>
 </span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>    <span class="nd">@property</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>    <span class="k">def</span> <span class="nf">health</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">health</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>        <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://web3api.io/health&quot;</span><span class="p">)</span>
 </span></pre></div>
 
@@ -144,31 +144,31 @@
 
     </div>
     <a class="headerlink" href="#AmberRequest"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="AmberRequest-12"><a href="#AmberRequest-12"><span class="linenos">12</span></a><span class="k">class</span> <span class="nc">AmberRequest</span><span class="p">:</span>
-</span><span id="AmberRequest-13"><a href="#AmberRequest-13"><span class="linenos">13</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="AmberRequest-12"><a href="#AmberRequest-12"><span class="linenos">12</span></a><span class="k">class</span><span class="w"> </span><span class="nc">AmberRequest</span><span class="p">:</span>
+</span><span id="AmberRequest-13"><a href="#AmberRequest-13"><span class="linenos">13</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
 </span><span id="AmberRequest-14"><a href="#AmberRequest-14"><span class="linenos">14</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">__key</span> <span class="o">=</span> <span class="n">key</span>
 </span><span id="AmberRequest-15"><a href="#AmberRequest-15"><span class="linenos">15</span></a>
 </span><span id="AmberRequest-16"><a href="#AmberRequest-16"><span class="linenos">16</span></a>    <span class="nd">@property</span>
-</span><span id="AmberRequest-17"><a href="#AmberRequest-17"><span class="linenos">17</span></a>    <span class="k">def</span> <span class="nf">prices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="AmberRequest-17"><a href="#AmberRequest-17"><span class="linenos">17</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">prices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="AmberRequest-18"><a href="#AmberRequest-18"><span class="linenos">18</span></a>        <span class="k">return</span> <span class="n">PriceRequest</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="AmberRequest-19"><a href="#AmberRequest-19"><span class="linenos">19</span></a>
 </span><span id="AmberRequest-20"><a href="#AmberRequest-20"><span class="linenos">20</span></a>    <span class="nd">@property</span>
-</span><span id="AmberRequest-21"><a href="#AmberRequest-21"><span class="linenos">21</span></a>    <span class="k">def</span> <span class="nf">ohlcv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="AmberRequest-21"><a href="#AmberRequest-21"><span class="linenos">21</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">ohlcv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="AmberRequest-22"><a href="#AmberRequest-22"><span class="linenos">22</span></a>        <span class="k">return</span> <span class="n">OhlcvRequest</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="AmberRequest-23"><a href="#AmberRequest-23"><span class="linenos">23</span></a>
 </span><span id="AmberRequest-24"><a href="#AmberRequest-24"><span class="linenos">24</span></a>    <span class="nd">@property</span>
-</span><span id="AmberRequest-25"><a href="#AmberRequest-25"><span class="linenos">25</span></a>    <span class="k">def</span> <span class="nf">bid_ask</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="AmberRequest-25"><a href="#AmberRequest-25"><span class="linenos">25</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">bid_ask</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="AmberRequest-26"><a href="#AmberRequest-26"><span class="linenos">26</span></a>        <span class="k">return</span> <span class="n">BidAskRequest</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="AmberRequest-27"><a href="#AmberRequest-27"><span class="linenos">27</span></a>
 </span><span id="AmberRequest-28"><a href="#AmberRequest-28"><span class="linenos">28</span></a>    <span class="nd">@property</span>
-</span><span id="AmberRequest-29"><a href="#AmberRequest-29"><span class="linenos">29</span></a>    <span class="k">def</span> <span class="nf">headers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="AmberRequest-29"><a href="#AmberRequest-29"><span class="linenos">29</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">headers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="AmberRequest-30"><a href="#AmberRequest-30"><span class="linenos">30</span></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;accept&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span> <span class="s2">&quot;x-api-key&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__key</span><span class="p">}</span>
 </span><span id="AmberRequest-31"><a href="#AmberRequest-31"><span class="linenos">31</span></a>
 </span><span id="AmberRequest-32"><a href="#AmberRequest-32"><span class="linenos">32</span></a>    <span class="nd">@property</span>
-</span><span id="AmberRequest-33"><a href="#AmberRequest-33"><span class="linenos">33</span></a>    <span class="k">def</span> <span class="nf">features</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="AmberRequest-33"><a href="#AmberRequest-33"><span class="linenos">33</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">features</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="AmberRequest-34"><a href="#AmberRequest-34"><span class="linenos">34</span></a>        <span class="k">return</span> <span class="n">Features_Request</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="AmberRequest-35"><a href="#AmberRequest-35"><span class="linenos">35</span></a>
-</span><span id="AmberRequest-36"><a href="#AmberRequest-36"><span class="linenos">36</span></a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="AmberRequest-36"><a href="#AmberRequest-36"><span class="linenos">36</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 </span><span id="AmberRequest-37"><a href="#AmberRequest-37"><span class="linenos">37</span></a>        <span class="n">log</span> <span class="o">=</span> <span class="n">logger</span> <span class="ow">or</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 </span><span id="AmberRequest-38"><a href="#AmberRequest-38"><span class="linenos">38</span></a>
 </span><span id="AmberRequest-39"><a href="#AmberRequest-39"><span class="linenos">39</span></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
@@ -180,7 +180,7 @@
 </span><span id="AmberRequest-45"><a href="#AmberRequest-45"><span class="linenos">45</span></a>        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;payload&quot;</span><span class="p">]</span>
 </span><span id="AmberRequest-46"><a href="#AmberRequest-46"><span class="linenos">46</span></a>
 </span><span id="AmberRequest-47"><a href="#AmberRequest-47"><span class="linenos">47</span></a>    <span class="nd">@property</span>
-</span><span id="AmberRequest-48"><a href="#AmberRequest-48"><span class="linenos">48</span></a>    <span class="k">def</span> <span class="nf">health</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="AmberRequest-48"><a href="#AmberRequest-48"><span class="linenos">48</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">health</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="AmberRequest-49"><a href="#AmberRequest-49"><span class="linenos">49</span></a>        <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://web3api.io/health&quot;</span><span class="p">)</span>
 </span></pre></div>
 
@@ -197,7 +197,7 @@
 
     </div>
     <a class="headerlink" href="#AmberRequest.__init__"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="AmberRequest.__init__-13"><a href="#AmberRequest.__init__-13"><span class="linenos">13</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="AmberRequest.__init__-13"><a href="#AmberRequest.__init__-13"><span class="linenos">13</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
 </span><span id="AmberRequest.__init__-14"><a href="#AmberRequest.__init__-14"><span class="linenos">14</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">__key</span> <span class="o">=</span> <span class="n">key</span>
 </span></pre></div>
 
@@ -215,7 +215,7 @@
     </div>
     <a class="headerlink" href="#AmberRequest.prices"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="AmberRequest.prices-16"><a href="#AmberRequest.prices-16"><span class="linenos">16</span></a>    <span class="nd">@property</span>
-</span><span id="AmberRequest.prices-17"><a href="#AmberRequest.prices-17"><span class="linenos">17</span></a>    <span class="k">def</span> <span class="nf">prices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="AmberRequest.prices-17"><a href="#AmberRequest.prices-17"><span class="linenos">17</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">prices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="AmberRequest.prices-18"><a href="#AmberRequest.prices-18"><span class="linenos">18</span></a>        <span class="k">return</span> <span class="n">PriceRequest</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 </span></pre></div>
 
@@ -233,7 +233,7 @@
     </div>
     <a class="headerlink" href="#AmberRequest.ohlcv"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="AmberRequest.ohlcv-20"><a href="#AmberRequest.ohlcv-20"><span class="linenos">20</span></a>    <span class="nd">@property</span>
-</span><span id="AmberRequest.ohlcv-21"><a href="#AmberRequest.ohlcv-21"><span class="linenos">21</span></a>    <span class="k">def</span> <span class="nf">ohlcv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="AmberRequest.ohlcv-21"><a href="#AmberRequest.ohlcv-21"><span class="linenos">21</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">ohlcv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="AmberRequest.ohlcv-22"><a href="#AmberRequest.ohlcv-22"><span class="linenos">22</span></a>        <span class="k">return</span> <span class="n">OhlcvRequest</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 </span></pre></div>
 
@@ -251,7 +251,7 @@
     </div>
     <a class="headerlink" href="#AmberRequest.bid_ask"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="AmberRequest.bid_ask-24"><a href="#AmberRequest.bid_ask-24"><span class="linenos">24</span></a>    <span class="nd">@property</span>
-</span><span id="AmberRequest.bid_ask-25"><a href="#AmberRequest.bid_ask-25"><span class="linenos">25</span></a>    <span class="k">def</span> <span class="nf">bid_ask</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="AmberRequest.bid_ask-25"><a href="#AmberRequest.bid_ask-25"><span class="linenos">25</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">bid_ask</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="AmberRequest.bid_ask-26"><a href="#AmberRequest.bid_ask-26"><span class="linenos">26</span></a>        <span class="k">return</span> <span class="n">BidAskRequest</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 </span></pre></div>
 
@@ -269,7 +269,7 @@
     </div>
     <a class="headerlink" href="#AmberRequest.headers"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="AmberRequest.headers-28"><a href="#AmberRequest.headers-28"><span class="linenos">28</span></a>    <span class="nd">@property</span>
-</span><span id="AmberRequest.headers-29"><a href="#AmberRequest.headers-29"><span class="linenos">29</span></a>    <span class="k">def</span> <span class="nf">headers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="AmberRequest.headers-29"><a href="#AmberRequest.headers-29"><span class="linenos">29</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">headers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="AmberRequest.headers-30"><a href="#AmberRequest.headers-30"><span class="linenos">30</span></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;accept&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span> <span class="s2">&quot;x-api-key&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__key</span><span class="p">}</span>
 </span></pre></div>
 
@@ -287,7 +287,7 @@
     </div>
     <a class="headerlink" href="#AmberRequest.features"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="AmberRequest.features-32"><a href="#AmberRequest.features-32"><span class="linenos">32</span></a>    <span class="nd">@property</span>
-</span><span id="AmberRequest.features-33"><a href="#AmberRequest.features-33"><span class="linenos">33</span></a>    <span class="k">def</span> <span class="nf">features</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="AmberRequest.features-33"><a href="#AmberRequest.features-33"><span class="linenos">33</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">features</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="AmberRequest.features-34"><a href="#AmberRequest.features-34"><span class="linenos">34</span></a>        <span class="k">return</span> <span class="n">Features_Request</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 </span></pre></div>
 
@@ -306,7 +306,7 @@
 
     </div>
     <a class="headerlink" href="#AmberRequest.get"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="AmberRequest.get-36"><a href="#AmberRequest.get-36"><span class="linenos">36</span></a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="AmberRequest.get-36"><a href="#AmberRequest.get-36"><span class="linenos">36</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 </span><span id="AmberRequest.get-37"><a href="#AmberRequest.get-37"><span class="linenos">37</span></a>        <span class="n">log</span> <span class="o">=</span> <span class="n">logger</span> <span class="ow">or</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 </span><span id="AmberRequest.get-38"><a href="#AmberRequest.get-38"><span class="linenos">38</span></a>
 </span><span id="AmberRequest.get-39"><a href="#AmberRequest.get-39"><span class="linenos">39</span></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
@@ -332,7 +332,7 @@
     </div>
     <a class="headerlink" href="#AmberRequest.health"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="AmberRequest.health-47"><a href="#AmberRequest.health-47"><span class="linenos">47</span></a>    <span class="nd">@property</span>
-</span><span id="AmberRequest.health-48"><a href="#AmberRequest.health-48"><span class="linenos">48</span></a>    <span class="k">def</span> <span class="nf">health</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="AmberRequest.health-48"><a href="#AmberRequest.health-48"><span class="linenos">48</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">health</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="AmberRequest.health-49"><a href="#AmberRequest.health-49"><span class="linenos">49</span></a>        <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://web3api.io/health&quot;</span><span class="p">)</span>
 </span></pre></div>
 
