@@ -12,7 +12,7 @@ jobs:
     - name: Checkout [${{ github.repository }}]
       uses: actions/checkout@v4
         
-    - uses: cvxgrp/.github/actions/uv/coverage@v2.0.5
+    - uses: cvxgrp/.github/actions/uv/coverage@v2.0.6
       with:
         source-folder: 'pyamber'
 
