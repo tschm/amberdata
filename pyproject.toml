@@ -10,10 +10,10 @@ dependencies = [
     "pandas>=2.2.3",
     "requests>=2.32.3",
 ]
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "Operating System :: OS Independent",
-]
+#classifiers = [
+#    "Programming Language :: Python :: 3",
+#    "Operating System :: OS Independent",
+#]
 #license = "MIT"
 #license-files = ["LICENSE.txt"]
 
