@@ -60,12 +60,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment: release
-      #name: release
-      #url: https://pypi.org/p/pyamber
-
-    permissions:
-      # This permission is required for trusted publishing.
-      id-token: write
 
     steps:
       - name: Checkout [${{ github.repository }}]
