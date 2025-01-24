@@ -68,6 +68,9 @@ jobs:
       id-token: write
 
     steps:
+      - name: Checkout [${{ github.repository }}]
+        uses: actions/checkout@v4
+
       - name: "Publish"
         uses: ./actions/publish
         with:
