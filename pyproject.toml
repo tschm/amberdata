@@ -14,12 +14,12 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
 ]
-license = "MIT"
+#license = "MIT"
 #license-files = ["LICENSE.txt"]
 
-[project.urls]
-repository = "https://github.com/tschm/amberdata"
-issues = "https://github.com/tschm/amberdata/issues"
+#[project.urls]
+#repository = "https://github.com/tschm/amberdata"
+#issues = "https://github.com/tschm/amberdata/issues"
 
 [dependency-groups]
 dev = [
@@ -47,9 +47,9 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = ["pyamber"]
 
-[tool.hatch.build]
-include = [
-    "LICENSE",    # Ensure the LICENSE file is included in your package
-    "README.md",
-    "pyamber"
-]
+#[tool.hatch.build]
+#include = [
+#    "LICENSE",    # Ensure the LICENSE file is included in your package
+#    "README.md",
+#    "pyamber"
+#]
