@@ -59,7 +59,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    environment: release
+    environment:
+      name: release
+      url: https://pypi.org/p/amberdata
+
+    #environment: release
 
     permissions:
       # This permission is required for trusted publishing.
@@ -78,18 +82,29 @@ jobs:
           path: dist
 
       # Generate the token
-      - name: Mint token
-        id: mint
-        uses: tschm/token-mint-action@v1.0.3
+      #- name: Mint token
+      #  id: mint
+      #  uses: tschm/token-mint-action@v1.0.3
 
       # Install twine and upload the dist folder using the token
-      - name: Publish the package
-        shell: bash
-        run: |
-           pip install twine==6.0.1
-           cd dist
-           ls -all
-           cd ..
-           twine upload --verbose -u token -p '${{ steps.mint.outputs.api-token }}' dist/*
+      #- name: Publish the package
+      #  shell: bash
+      #  run: |
+      #     pip install twine==6.0.1
+      #     cd dist
+      #     ls -all
+      #     cd ..
+      #     twine upload --verbose -u token -p '${{ steps.mint.outputs.api-token }}' dist/*
 
-      #- uses: cvxgrp/.github/actions/publish@v2.0.6
+      #- name: Upload release to PyPI
+        #runs-on: ubuntu-latest
+        #environment:
+        #  name: release
+        #  url: https://pypi.org/p/amberdata
+        #permissions:
+        #  id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
+        #steps:
+        # retrieve your distributions here
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
