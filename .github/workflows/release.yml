@@ -28,4 +28,27 @@ jobs:
       - name: Checkout [${{ github.repository }}]
         uses: actions/checkout@v4
 
-      - uses: cvxgrp/.github/actions/publish@v2.0.6
+      - uses: actions/setup-python@v5
+
+      # Download the dist folder from the build job
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      # Generate the token
+      - name: Mint token
+        id: mint
+        uses: tschm/token-mint-action@v1.0.3
+
+      # Install twine and upload the dist folder using the token
+      - name: Publish the package
+        shell: bash
+        run: |
+           pip install twine
+           cd dist
+           ls -all
+           cd ..
+           twine upload --verbose -u token -p '${{ steps.mint.outputs.api-token }}' dist/*
+
+      #- uses: cvxgrp/.github/actions/publish@v2.0.6
