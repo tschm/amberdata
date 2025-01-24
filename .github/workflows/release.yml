@@ -68,10 +68,8 @@ jobs:
       id-token: write
 
     steps:
-      - name: Checkout [${{ github.repository }}]
-        uses: actions/checkout@v4
-
-      #- uses: actions/setup-python@v5
+      #- name: Checkout [${{ github.repository }}]
+      #  uses: actions/checkout@v4
 
       # Download the dist folder from the build job
       - uses: actions/download-artifact@v4
