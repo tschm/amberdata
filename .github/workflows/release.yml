@@ -86,7 +86,7 @@ jobs:
       - name: Publish the package
         shell: bash
         run: |
-           pip install twine
+           pip install twine==6.0.1
            cd dist
            ls -all
            cd ..
