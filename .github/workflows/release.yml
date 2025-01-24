@@ -59,20 +59,25 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    environment:
-      name: release
-      url: https://pypi.org/p/pyamber
+    environment: release
+      #name: release
+      #url: https://pypi.org/p/pyamber
 
     permissions:
       # This permission is required for trusted publishing.
       id-token: write
 
     steps:
-      # Download the dist folder from the build job
-      - uses: actions/download-artifact@v4
+      - name: "Publish"
+        uses: "./actions/publish"
         with:
-          name: dist
-          path: dist
+          url: https://pypi.org/p/pyamber
 
-      - name: Publish package distributions to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+      # Download the dist folder from the build job
+      #- uses: actions/download-artifact@v4
+      #  with:
+      #    name: dist
+      #    path: dist
+
+      #- name: Publish package distributions to PyPI
+      #  uses: pypa/gh-action-pypi-publish@release/v1

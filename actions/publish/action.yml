@@ -1,0 +1,27 @@
+name: Publish Python Package
+description: "Publish dist"
+
+inputs:
+  url:
+    description: 'url of repo'
+    required: true
+
+runs:
+  using: "composite"
+
+  permissions:
+    # This permission is required for trusted publishing.
+    id-token: write
+
+
+  steps:
+    # Download the dist folder from the build job
+    - uses: actions/download-artifact@v4
+      with:
+        name: dist
+        path: dist
+
+    - name: Publish package distributions to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        repository-url: ${inputs.url}
