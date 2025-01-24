@@ -61,17 +61,15 @@ jobs:
     needs: build
     environment:
       name: release
-      url: https://pypi.org/p/amberdata
+      url: https://pypi.org/p/pyamber
 
     permissions:
       # This permission is required for trusted publishing.
       id-token: write
 
     steps:
-      - name: Checkout [${{ github.repository }}]
-        uses: actions/checkout@v4
-
-      #- uses: actions/setup-python@v5
+      #- name: Checkout [${{ github.repository }}]
+      #  uses: actions/checkout@v4
 
       # Download the dist folder from the build job
       - uses: actions/download-artifact@v4
