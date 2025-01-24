@@ -69,7 +69,7 @@ jobs:
 
     steps:
       - name: "Publish"
-        uses: "./actions/publish"
+        uses: ./actions/publish
         with:
           url: https://pypi.org/p/pyamber
 
