@@ -34,9 +34,14 @@ jobs:
           name: dist
           path: dist
 
-      - uses: cvxgrp/.github/actions/publish@main
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          url: https://pypi.org/p/pyamber
+          repository-url: https://pypi.org/p/pyamber
+
+      #- uses: cvxgrp/.github/actions/publish@main
+      #  with:
+      #    url: https://pypi.org/p/pyamber
 
 
 
