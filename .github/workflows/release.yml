@@ -66,7 +66,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: "Publish"
-        uses: ./actions/publish@main
+        uses: tschm/amberdata/actions/publish@main
         with:
           url: https://pypi.org/p/pyamber
 
