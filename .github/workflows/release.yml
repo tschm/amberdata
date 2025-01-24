@@ -25,8 +25,8 @@ jobs:
     #  id-token: write
 
     steps:
-      #- name: Checkout [${{ github.repository }}]
-      #  uses: actions/checkout@v4
+      - name: Checkout [${{ github.repository }}]
+        uses: actions/checkout@v4
 
       - uses: cvxgrp/.github/actions/publish@main
         #with:
