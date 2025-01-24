@@ -20,13 +20,19 @@ jobs:
     needs: build
     environment: release
 
-    #permissions:
-    #  # This permission is required for trusted publishing.
-    #  id-token: write
+    permissions:
+      # This permission is required for trusted publishing.
+      id-token: write
 
     steps:
       - name: Checkout [${{ github.repository }}]
         uses: actions/checkout@v4
+
+      # download dist from build
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
 
       - uses: cvxgrp/.github/actions/publish@main
         with:
