@@ -20,24 +20,29 @@ jobs:
     needs: build
     environment: release
 
-    permissions:
-      # This permission is required for trusted publishing.
-      id-token: write
+    #permissions:
+    #  # This permission is required for trusted publishing.
+    #  id-token: write
 
     steps:
-      - name: Checkout [${{ github.repository }}]
-        uses: actions/checkout@v4
+      #- name: Checkout [${{ github.repository }}]
+      #  uses: actions/checkout@v4
+
+      - uses: cvxgrp/.github/actions/publish@main
+        #with:
+        #  python-version: '3.12'
+
 
       # download dist from build
-      - uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
-
-      - name: Publish package distributions to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          repository-url: https://upload.pypi.org/legacy/
+#      - uses: actions/download-artifact@v4
+#        with:
+#          name: dist
+#          path: dist
+#
+#      - name: Publish package distributions to PyPI
+#        uses: pypa/gh-action-pypi-publish@release/v1
+#        with:
+#          repository-url: https://upload.pypi.org/legacy/
 
       #- uses: cvxgrp/.github/actions/publish@main
       #  with:
