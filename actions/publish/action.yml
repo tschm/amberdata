@@ -1,6 +1,10 @@
 name: Publish Python Package
 description: "Publish dist"
 
+permissions:
+  # This permission is required for trusted publishing.
+  id-token: write
+
 inputs:
   url:
     description: 'url of repo'
@@ -8,11 +12,6 @@ inputs:
 
 runs:
   using: "composite"
-
-  permissions:
-    # This permission is required for trusted publishing.
-    id-token: write
-
 
   steps:
     # Download the dist folder from the build job
