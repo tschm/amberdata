@@ -11,70 +11,99 @@ jobs:
       - name: Checkout [${{ github.repository }}]
         uses: actions/checkout@v4
 
-      # This is not using any github-token:
-      - name: Install uv
-        shell: bash
-        run: |
-          curl -LsSf https://astral.sh/uv/install.sh | sh
-
-          # Add UV to PATH for the current shell session
-          echo "$HOME/.local/bin" >> $GITHUB_PATH   # Add UV binary directory to PATH in GitHub Actions environment
-          export PATH="$HOME/.local/bin:$PATH"      # Add UV binary directory to PATH for the current shell session
-
-          # "Verify UV installation"
-          uv --version  # Should print the installed version of UV
-
-      - name: "Set up Python"
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Set up Python environment with uv
-        shell: bash
-        run: |
-          # Create venv
-          uv venv
-          # Add venv to PATH
-          echo ".venv/bin" >> $GITHUB_PATH
-          uv sync --all-extras --dev --frozen
-
-      - name: Build package
-        shell: bash
-        run: |
-          # Update version in pyproject.toml from git tag
-          sed -i -e "s/0.0.0/${GITHUB_REF#refs/*/}/" pyproject.toml
-          uv pip install hatch
-          # Build the package
-          hatch build
-
-      - name: Upload build artifacts
-        if: ${{ env.ACT != 'true' }}  # Skip if running with 'act'
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist
-          retention-days: 1
-
+      - uses: cvxgrp/.github/actions/uv/build@v2.0.6
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
     environment: release
 
+    permissions:
+      # This permission is required for trusted publishing.
+      id-token: write
+
     steps:
       - name: Checkout [${{ github.repository }}]
         uses: actions/checkout@v4
 
-      - name: "Publish"
-        uses: tschm/amberdata/actions/publish@main
+      - uses: cvxgrp/.github/actions/publish@main
         with:
           url: https://pypi.org/p/pyamber
 
-      # Download the dist folder from the build job
-      #- uses: actions/download-artifact@v4
-      #  with:
-      #    name: dist
-      #    path: dist
 
-      #- name: Publish package distributions to PyPI
-      #  uses: pypa/gh-action-pypi-publish@release/v1
+
+
+#jobs:
+#  build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout [${{ github.repository }}]
+#        uses: actions/checkout@v4
+#
+#      # This is not using any github-token:
+#      - name: Install uv
+#        shell: bash
+#        run: |
+#          curl -LsSf https://astral.sh/uv/install.sh | sh
+#
+#          # Add UV to PATH for the current shell session
+#          echo "$HOME/.local/bin" >> $GITHUB_PATH   # Add UV binary directory to PATH in GitHub Actions environment
+#          export PATH="$HOME/.local/bin:$PATH"      # Add UV binary directory to PATH for the current shell session
+#
+#          # "Verify UV installation"
+#          uv --version  # Should print the installed version of UV
+#
+#      - name: "Set up Python"
+#        uses: actions/setup-python@v5
+#        with:
+#          python-version: '3.12'
+#
+#      - name: Set up Python environment with uv
+#        shell: bash
+#        run: |
+#          # Create venv
+#          uv venv
+#          # Add venv to PATH
+#          echo ".venv/bin" >> $GITHUB_PATH
+#          uv sync --all-extras --dev --frozen
+#
+#      - name: Build package
+#        shell: bash
+#        run: |
+#          # Update version in pyproject.toml from git tag
+#          sed -i -e "s/0.0.0/${GITHUB_REF#refs/*/}/" pyproject.toml
+#          uv pip install hatch
+#          # Build the package
+#          hatch build
+#
+#      - name: Upload build artifacts
+#        if: ${{ env.ACT != 'true' }}  # Skip if running with 'act'
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: dist
+#          path: dist
+#          retention-days: 1
+#
+#
+#  deploy:
+#    runs-on: ubuntu-latest
+#    needs: build
+#    environment: release
+#
+#    steps:
+#      - name: Checkout [${{ github.repository }}]
+#        uses: actions/checkout@v4
+#
+#      - name: "Publish"
+#        uses: tschm/amberdata/actions/publish@main
+#        with:
+#          url: https://pypi.org/p/pyamber
+#
+#      # Download the dist folder from the build job
+#      #- uses: actions/download-artifact@v4
+#      #  with:
+#      #    name: dist
+#      #    path: dist
+#
+#      #- name: Publish package distributions to PyPI
+#      #  uses: pypa/gh-action-pypi-publish@release/v1
