@@ -1,7 +1,7 @@
 # [pyamber](https://tschm.github.io/amberdata/book)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/tschm/amberdata/main.svg)](https://results.pre-commit.ci/latest/github/tschm/amberdata/main)
-
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/tschm/pyamber)
 
 Some utility code for interacting with amberdata.
