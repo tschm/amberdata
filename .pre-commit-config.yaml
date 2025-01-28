@@ -7,7 +7,7 @@ repos:
       - id: trailing-whitespace
       - id: check-yaml
 
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
+  - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: 'v0.9.3'
     hooks:
       - id: ruff
@@ -47,6 +47,6 @@ repos:
       - id: validate-pyproject
 
   - repo: https://github.com/crate-ci/typos
-    rev: v1.29.4
+    rev: dictgen-v0.3.1
     hooks:
       - id: typos
