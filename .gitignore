@@ -1,6 +1,7 @@
  *.pyc
 .idea
 .task
+.venv
 
 tmp
 *.log
