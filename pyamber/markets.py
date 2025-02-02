@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import pandas as pd
 
-from pyamber.enum import TimeFormat, TimeInterval
-from pyamber.intervals import intervals
-from pyamber.util import frames
+from .enum import TimeFormat, TimeInterval
+from .intervals import intervals
+from .util import frames
 
 pd.Timestamp.value_in_milliseconds = property(lambda self: int(self.value * 1e-6))
 

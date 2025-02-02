@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from flask import Flask, current_app
 
-from pyamber.request import AmberRequest
+from .request import AmberRequest
 
 
 class InvalidSettingsError(Exception):

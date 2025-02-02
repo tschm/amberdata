@@ -4,8 +4,8 @@ import logging
 
 import requests
 
-from pyamber.features import Features_Request
-from pyamber.markets import BidAskRequest, OhlcvRequest, PriceRequest
+from .features import Features_Request
+from .markets import BidAskRequest, OhlcvRequest, PriceRequest
 
 
 class AmberRequest:
