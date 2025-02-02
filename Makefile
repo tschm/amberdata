@@ -5,7 +5,7 @@ RESET := \033[0m
 
 .DEFAULT_GOAL := help
 
-.PHONY: help verify install fmt test clean
+.PHONY: help verify install fmt test marimo clean
 
 ##@ Development Setup
 
@@ -38,6 +38,13 @@ test: install ## Run all tests
 clean: ## Clean generated files and directories
 	@printf "$(BLUE)Cleaning project...$(RESET)\n"
 	@git clean -d -X -f
+
+##@ Marimo & Jupyter
+
+marimo: install ## Start a Marimo server
+	@printf "$(BLUE)Start Marimo server...$(RESET)\n"
+	@uv pip install marimo
+	@uv run marimo edit book/marimo
 
 ##@ Help
 
