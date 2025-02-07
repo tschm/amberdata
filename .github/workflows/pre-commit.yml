@@ -12,9 +12,9 @@ jobs:
 
     steps:
       - name: "Build the virtual environment for ${{ github.repository }}"
-        uses: cvxgrp/.github/actions/environment@v2.2.1
+        uses: cvxgrp/.github/actions/environment@v2.2.2
 
-      - uses: cvxgrp/.github/actions/deptry@v2.2.1
+      - uses: cvxgrp/.github/actions/deptry@v2.2.2
         with:
           source-folder: 'pyamber'
 
