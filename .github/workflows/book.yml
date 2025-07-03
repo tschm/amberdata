@@ -23,6 +23,7 @@ jobs:
       - uses: tschm/cradle/actions/coverage@v0.1.75
         with:
           source-folder: 'pyamber'
+          tests-folder: 'tests'
 
   book:
     runs-on: "ubuntu-latest"
