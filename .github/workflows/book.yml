@@ -37,7 +37,7 @@ jobs:
       name: github-pages
 
     steps:
-      - uses: tschm/cradle/actions/book@0.1.75
+      - uses: tschm/cradle/actions/book@v0.1.75
         with:
           title: "amberdata"
           links: |
