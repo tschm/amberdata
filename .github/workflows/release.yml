@@ -15,22 +15,3 @@ jobs:
         uses: tschm/cradle/actions/tag@v0.1.75
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
-  publish:
-    needs: tag
-    runs-on: ubuntu-latest
-    environment: release
-
-    permissions:
-      contents: read
-      # This permission is required for trusted publishing.
-      id-token: write
-
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
-
-      - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
