@@ -24,7 +24,7 @@ issues = "https://github.com/tschm/amberdata/issues"
 dev = [
     "pytest-cov>=6.0.0",
     "pytest>=8.3.3",
-    "pre-commit>=4.0.1",
+    "pre-commit>=4.2.0",
     "httpretty>=1.1.4",
     "requests-mock>=1.12.1",
 ]
