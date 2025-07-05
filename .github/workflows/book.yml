@@ -12,9 +12,9 @@ jobs:
       contents: read
     steps:
       - name: "Build the virtual environment for ${{ github.repository }}"
-        uses: tschm/cradle/actions/environment@v0.1.75
+        uses: tschm/cradle/actions/environment@v0.1.80
 
-      - uses: tschm/cradle/actions/pdoc@v0.1.75
+      - uses: tschm/cradle/actions/pdoc@v0.1.80
         with:
           source-folder: 'pyamber'
 
@@ -24,9 +24,9 @@ jobs:
       contents: read
     steps:
       - name: "Build the virtual environment for ${{ github.repository }}"
-        uses: tschm/cradle/actions/environment@v0.1.75
+        uses: tschm/cradle/actions/environment@v0.1.80
 
-      - uses: tschm/cradle/actions/coverage@v0.1.75
+      - uses: tschm/cradle/actions/coverage@v0.1.80
         with:
           source-folder: 'pyamber'
           tests-folder: 'tests'
@@ -44,7 +44,7 @@ jobs:
       name: github-pages
 
     steps:
-      - uses: tschm/cradle/actions/book@v0.1.75
+      - uses: tschm/cradle/actions/book@v0.1.80
         with:
           title: "amberdata"
           links: |
